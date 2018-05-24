@@ -1,0 +1,356 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "report_id",
+              "report_date",
+              "user_client_type",
+              "c_uid",
+              "c_sid",
+              "reg_count",
+              "reg_1_count",
+              "reg_web",
+              "reg_qq",
+              "reg_weibo",
+              "bind_cell_phone",
+              "online_time",
+              "active_count",
+              "say_hi_user_count",
+              "say_hi_count",
+              "replay_user_count",
+              "replay_count",
+              "pay_user_count",
+              "pay_amount",
+              "sec_login",
+              "reach_pay_page_user_count",
+              "today_reg_reach_pay_page_user_count",
+              "hit_pay_button_user_count",
+              "hit_pay_button_alipay_user_count",
+              "hit_pay_button_card_user_count",
+              "hit_pay_button_union_pay_user_count",
+              "hit_pay_button_alipay_wap_user_count",
+              "today_reg_hit_pay_button_user_count",
+              "want_replay_user_count",
+              "today_reg_want_replay_user_count",
+              "view_kf_replay_user_count",
+              "today_reg_view_kf_replay_user_count",
+              "click_online_kf_button_user_count",
+              "today_reg_user_active_user",
+              "today_reg_user_say_hi_user_count",
+              "today_reg_user_say_hi_count",
+              "replay_first_user_count",
+              "today_reg_replay_first_user_count",
+              "enter_index_page_user_count",
+              "today_reg_enter_index_page_user_count",
+              "pay_success_alipay_user_count",
+              "pay_success_union_pay_user_count",
+              "pay_success_card_pay_user_count",
+              "pay_success_alipay_wap_user_count",
+              "today_reg_pay_success_alipay_user_count",
+              "today_reg_pay_success_union_pay_user_count",
+              "today_reg_pay_success_card_pay_user_count",
+              "today_reg_pay_success_alipay_wap_user_count",
+              "pay_alipay_amount",
+              "pay_union_pay_amount",
+              "pay_card_pay_amount",
+              "pay_alipay_wap_amount",
+              "service_ping",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "today_reg_pay_alipay_amount",
+              "today_reg_pay_union_pay_amount",
+              "today_reg_pay_card_pay_amount",
+              "today_reg_pay_alipay_wap_amount"
+            ],
+            "splitPk": "report_id",
+            "connection": [
+              {
+                "table": [
+                  "report"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report",
+            "fileName": "report",
+            "column": [
+              {
+                "name": "report_id",
+                "type": "INT"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "user_client_type",
+                "type": "int"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "reg_count",
+                "type": "int"
+              },
+              {
+                "name": "reg_1_count",
+                "type": "int"
+              },
+              {
+                "name": "reg_web",
+                "type": "int"
+              },
+              {
+                "name": "reg_qq",
+                "type": "int"
+              },
+              {
+                "name": "reg_weibo",
+                "type": "int"
+              },
+              {
+                "name": "bind_cell_phone",
+                "type": "int"
+              },
+              {
+                "name": "online_time",
+                "type": "int"
+              },
+              {
+                "name": "active_count",
+                "type": "int"
+              },
+              {
+                "name": "say_hi_user_count",
+                "type": "int"
+              },
+              {
+                "name": "say_hi_count",
+                "type": "int"
+              },
+              {
+                "name": "replay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "replay_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_amount",
+                "type": "int"
+              },
+              {
+                "name": "sec_login",
+                "type": "int"
+              },
+              {
+                "name": "reach_pay_page_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_reach_pay_page_user_count",
+                "type": "int"
+              },
+              {
+                "name": "hit_pay_button_user_count",
+                "type": "int"
+              },
+              {
+                "name": "hit_pay_button_alipay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "hit_pay_button_card_user_count",
+                "type": "int"
+              },
+              {
+                "name": "hit_pay_button_union_pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "hit_pay_button_alipay_wap_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_hit_pay_button_user_count",
+                "type": "int"
+              },
+              {
+                "name": "want_replay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_want_replay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "view_kf_replay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_view_kf_replay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "click_online_kf_button_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_user_active_user",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_user_say_hi_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_user_say_hi_count",
+                "type": "int"
+              },
+              {
+                "name": "replay_first_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_replay_first_user_count",
+                "type": "int"
+              },
+              {
+                "name": "enter_index_page_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_enter_index_page_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_success_alipay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_success_union_pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_success_card_pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_success_alipay_wap_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_pay_success_alipay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_pay_success_union_pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_pay_success_card_pay_user_count",
+                "type": "int"
+              },
+              {
+                "name": "today_reg_pay_success_alipay_wap_user_count",
+                "type": "int"
+              },
+              {
+                "name": "pay_alipay_amount",
+                "type": "double"
+              },
+              {
+                "name": "pay_union_pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "pay_card_pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "pay_alipay_wap_amount",
+                "type": "double"
+              },
+              {
+                "name": "service_ping",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "today_reg_pay_alipay_amount",
+                "type": "double"
+              },
+              {
+                "name": "today_reg_pay_union_pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "today_reg_pay_card_pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "today_reg_pay_alipay_wap_amount",
+                "type": "double"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "bd_id",
+              "c_uid",
+              "wap_c_uid",
+              "company",
+              "master_domain",
+              "default_domain",
+              "formal_domain",
+              "robots_flag",
+              "push_flag",
+              "title",
+              "wechat_id",
+              "mchid",
+              "prefix",
+              "token",
+              "appid",
+              "appsecret",
+              "templateid",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "mp_options"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_mp_options",
+            "fileName": "mp_options",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "bd_id",
+                "type": "int"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "wap_c_uid",
+                "type": "int"
+              },
+              {
+                "name": "company",
+                "type": "int"
+              },
+              {
+                "name": "master_domain",
+                "type": "int"
+              },
+              {
+                "name": "default_domain",
+                "type": "int"
+              },
+              {
+                "name": "formal_domain",
+                "type": "int"
+              },
+              {
+                "name": "robots_flag",
+                "type": "tinyint"
+              },
+              {
+                "name": "push_flag",
+                "type": "tinyint"
+              },
+              {
+                "name": "title",
+                "type": "varchar"
+              },
+              {
+                "name": "wechat_id",
+                "type": "varchar"
+              },
+              {
+                "name": "mchid",
+                "type": "varchar"
+              },
+              {
+                "name": "prefix",
+                "type": "varchar"
+              },
+              {
+                "name": "token",
+                "type": "varchar"
+              },
+              {
+                "name": "appid",
+                "type": "varchar"
+              },
+              {
+                "name": "appsecret",
+                "type": "varchar"
+              },
+              {
+                "name": "templateid",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

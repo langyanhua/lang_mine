@@ -1,0 +1,161 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "wid",
+              "uid",
+              "credit",
+              "url",
+              "name",
+              "price",
+              "checked",
+              "reason",
+              "close",
+              "complete",
+              "website",
+              "o_id",
+              "g_id",
+              "contact",
+              "phone",
+              "address",
+              "courier_company",
+              "courier_num",
+              "status",
+              "create_time",
+              "complete_time",
+              "update_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_wish"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_wish",
+            "fileName": "user_wish",
+            "column": [
+              {
+                "name": "wid",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "credit",
+                "type": "int"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "price",
+                "type": "double"
+              },
+              {
+                "name": "checked",
+                "type": "tinyint"
+              },
+              {
+                "name": "reason",
+                "type": "tinyint"
+              },
+              {
+                "name": "close",
+                "type": "tinyint"
+              },
+              {
+                "name": "complete",
+                "type": "tinyint"
+              },
+              {
+                "name": "website",
+                "type": "tinyint"
+              },
+              {
+                "name": "o_id",
+                "type": "varchar"
+              },
+              {
+                "name": "g_id",
+                "type": "int"
+              },
+              {
+                "name": "contact",
+                "type": "varchar"
+              },
+              {
+                "name": "phone",
+                "type": "varchar"
+              },
+              {
+                "name": "address",
+                "type": "varchar"
+              },
+              {
+                "name": "courier_company",
+                "type": "varchar"
+              },
+              {
+                "name": "courier_num",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "complete_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

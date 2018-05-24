@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "msg_tpl_id",
+              "userid",
+              "hour_start",
+              "hour_end",
+              "status",
+              "weight",
+              "weight_lock_tm",
+              "type",
+              "client_type"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "msg_tpl_user_cp"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_msg_tpl_user_cp",
+            "fileName": "msg_tpl_user_cp",
+            "column": [
+              {
+                "name": "msg_tpl_id",
+                "type": "INT"
+              },
+              {
+                "name": "userid",
+                "type": "int"
+              },
+              {
+                "name": "hour_start",
+                "type": "tinyint"
+              },
+              {
+                "name": "hour_end",
+                "type": "tinyint"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "weight",
+                "type": "int"
+              },
+              {
+                "name": "weight_lock_tm",
+                "type": "int"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "client_type",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

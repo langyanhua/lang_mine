@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "vid",
+              "name",
+              "packname",
+              "app_key",
+              "platform",
+              "c_uid",
+              "c_sid",
+              "update_time",
+              "status"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "app_new_ver_channel"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_app_new_ver_channel",
+            "fileName": "app_new_ver_channel",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "vid",
+                "type": "int"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "packname",
+                "type": "varchar"
+              },
+              {
+                "name": "appkey",
+                "type": "varchar"
+              },
+              {
+                "name": "platform",
+                "type": "tinyint"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

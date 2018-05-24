@@ -1,0 +1,106 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "username",
+              "login_time",
+              "login_ip",
+              "result",
+              "comment",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "manager_login_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_manager_login_log",
+            "fileName": "manager_login_log",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "username",
+                "type": "varchar"
+              },
+              {
+                "name": "login_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "login_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "result",
+                "type": "tinyint"
+              },
+              {
+                "name": "comment",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

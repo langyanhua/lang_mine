@@ -1,0 +1,131 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "uid",
+              "money",
+              "accountname",
+              "accountnum",
+              "bank",
+              "status",
+              "create_time",
+              "handling_time",
+              "sendnum",
+              "deduct_money",
+              "taxes",
+              "taxmoney",
+              "subbank",
+              "bankstatus",
+              "paytype"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "game_fruit_withdraw"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_game_fruit_withdraw",
+            "fileName": "game_fruit_withdraw",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "money",
+                "type": "int"
+              },
+              {
+                "name": "accountname",
+                "type": "varchar"
+              },
+              {
+                "name": "accountnum",
+                "type": "varchar"
+              },
+              {
+                "name": "bank",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "handling_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "sendnum",
+                "type": "int"
+              },
+              {
+                "name": "deduct_money",
+                "type": "int"
+              },
+              {
+                "name": "taxes",
+                "type": "int"
+              },
+              {
+                "name": "taxmoney",
+                "type": "int"
+              },
+              {
+                "name": "subbank",
+                "type": "varchar"
+              },
+              {
+                "name": "bankstatus",
+                "type": "tinyint"
+              },
+              {
+                "name": "paytype",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

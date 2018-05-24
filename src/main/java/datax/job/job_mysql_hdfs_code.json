@@ -1,0 +1,70 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "code_id",
+              "code_url",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "code"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_code",
+            "fileName": "code",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "code_id",
+                "type": "int"
+              }, {
+                "name": "code_url",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

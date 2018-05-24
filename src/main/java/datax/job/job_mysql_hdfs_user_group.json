@@ -1,0 +1,126 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "groupid",
+              "name",
+              "allowsendmessage",
+              "allowvisit",
+              "allowmessagetop",
+              "allowindexshow",
+              "allowsearchshow",
+              "allowbroadcast",
+              "allowviewnums",
+              "price_y",
+              "price_3m",
+              "price_1m",
+              "description",
+              "listorder",
+              "disabled"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_group"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_group",
+            "fileName": "user_group",
+            "column": [
+              {
+                "name": "groupid",
+                "type": "tinyint"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "allowsendmessage",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowvisit",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowmessagetop",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowindexshow",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowsearchshow",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowbroadcast",
+                "type": "tinyint"
+              },
+              {
+                "name": "allowviewnums",
+                "type": "int"
+              },
+              {
+                "name": "price_y",
+                "type": "double"
+              },
+              {
+                "name": "price_3m",
+                "type": "double"
+              },
+              {
+                "name": "price_1m",
+                "type": "double"
+              },
+              {
+                "name": "description",
+                "type": "varchar"
+              },
+              {
+                "name": "listorder",
+                "type": "tinyint"
+              },
+              {
+                "name": "disabled",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

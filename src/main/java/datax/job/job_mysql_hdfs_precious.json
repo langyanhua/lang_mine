@@ -1,0 +1,131 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "name",
+              "coin",
+              "market_price",
+              "thumb",
+              "description",
+              "num",
+              "usenum",
+              "proportion",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "content",
+              "unit",
+              "`sort`"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "precious"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_precious",
+            "fileName": "precious",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "coin",
+                "type": "int"
+              },
+              {
+                "name": "market_price",
+                "type": "float"
+              },
+              {
+                "name": "thumb",
+                "type": "varchar"
+              },
+              {
+                "name": "description",
+                "type": "varchar"
+              },
+              {
+                "name": "num",
+                "type": "int"
+              },
+              {
+                "name": "usenum",
+                "type": "int"
+              },
+              {
+                "name": "proportion",
+                "type": "float"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "content",
+                "type": "varchar"
+              },
+              {
+                "name": "unit",
+                "type": "varchar"
+              },
+              {
+                "name": "sort",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "kuplay_id",
+              "create_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_kuplay"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_kuplay",
+            "fileName": "user_kuplay",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "kuplay_id",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

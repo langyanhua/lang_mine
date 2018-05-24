@@ -1,0 +1,81 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "share_id",
+              "share_time",
+              "type",
+              "uid",
+              "share_expire_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "share"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_share",
+            "fileName": "share",
+            "column": [
+              {
+                "name": "share_id",
+                "type": "INT"
+              },
+              {
+                "name": "share_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "share_expire_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

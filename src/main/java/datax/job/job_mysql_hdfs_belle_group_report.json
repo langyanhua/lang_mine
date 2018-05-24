@@ -1,0 +1,151 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "group_id",
+              "belle_num",
+              "android_server_num",
+              "ios_server_num",
+              "server_num",
+              "android_app_num",
+              "ios_app_num",
+              "app_num",
+              "t_1",
+              "t_2",
+              "t_3",
+              "t_4",
+              "g_1",
+              "g_2",
+              "g_3",
+              "g_4",
+              "view_t_1",
+              "view_t_2",
+              "view_t_3",
+              "view_t_4"
+            ],
+            "splitPk": "group_id",
+            "connection": [
+              {
+                "table": [
+                  "belle_group_report"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_belle_group_report",
+            "fileName": "belle_group_report",
+            "column": [
+              {
+                "name": "gruop_id",
+                "type": "int"
+              },
+              {
+                "name": "belle_num",
+                "type": "int"
+              },
+              {
+                "name": "android_server_num",
+                "type": "int"
+              },
+              {
+                "name": "ios_server_num",
+                "type": "int"
+              },
+              {
+                "name": "server_num",
+                "type": "int"
+              },
+              {
+                "name": "android_app_num",
+                "type": "int"
+              },
+              {
+                "name": "ios_app_num",
+                "type": "int"
+              },
+              {
+                "name": "app_num",
+                "type": "int"
+              },
+              {
+                "name": "t_1",
+                "type": "int"
+              },
+              {
+                "name": "t_2",
+                "type": "int"
+              },
+              {
+                "name": "t_3",
+                "type": "int"
+              },
+              {
+                "name": "t_4",
+                "type": "int"
+              },
+              {
+                "name": "g_1",
+                "type": "int"
+              },
+              {
+                "name": "g_2",
+                "type": "int"
+              },
+              {
+                "name": "g_3",
+                "type": "int"
+              },
+              {
+                "name": "g_4",
+                "type": "int"
+              },
+              {
+                "name": "view_t_1",
+                "type": "int"
+              },
+              {
+                "name": "view_t_2",
+                "type": "int"
+              },
+              {
+                "name": "view_t_3",
+                "type": "int"
+              },
+              {
+                "name": "view_t_4",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

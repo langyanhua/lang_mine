@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "url",
+              "uid",
+              "sex_result",
+              "sex_rate",
+              "sex_review",
+              "ad_result",
+              "ad_rate",
+              "ad_review",
+              "face_result",
+              "face_rate",
+              "face_review",
+              "beauti_result",
+              "beauti_rate",
+              "beauti_review",
+              "review_status",
+              "tm",
+              "review_result",
+              "review_tm"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_avatar_verify"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_avatar_verify",
+            "fileName": "user_avatar_verify",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "bigint"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "sex_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "sex_rate",
+                "type": "float"
+              },
+              {
+                "name": "sex_review",
+                "type": "tinyint"
+              },
+              {
+                "name": "ad_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "ad_rate",
+                "type": "float"
+              },
+              {
+                "name": "ad_review",
+                "type": "tinyint"
+              },
+              {
+                "name": "face_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "face_rate",
+                "type": "float"
+              },
+              {
+                "name": "face_review",
+                "type": "tinyint"
+              },
+              {
+                "name": "beauti_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "beauti_rate",
+                "type": "float"
+              },
+              {
+                "name": "beauti_review",
+                "type": "tinyint"
+              },
+              {
+                "name": "review_status",
+                "type": "tinyint"
+              },
+              {
+                "name": "tm",
+                "type": "int"
+              },
+              {
+                "name": "review_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "review_tm",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

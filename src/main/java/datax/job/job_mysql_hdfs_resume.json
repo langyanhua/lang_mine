@@ -1,0 +1,201 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "t_id",
+              "u_name",
+              "u_gender",
+              "u_birthday",
+              "u_edu",
+              "u_school",
+              "work_year",
+              "u_industry",
+              "u_professional",
+              "u_srouce",
+              "u_tel",
+              "u_qq",
+              "work_experience",
+              "status",
+              "u_zhuanye",
+              "u_evaluation",
+              "update_time",
+              "create_time",
+              "u_email",
+              "province",
+              "city",
+              "u_good_at_skills",
+              "u_marry_status",
+              "u_native_place",
+              "u_rs_evaluation",
+              "u_bm_evaluation",
+              "u_home_address",
+              "u_post_match",
+              "u_interview_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "resume"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_resume",
+            "fileName": "resume",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "t_id",
+                "type": "int"
+              },
+              {
+                "name": "u_name",
+                "type": "varchar"
+              },
+              {
+                "name": "u_gender",
+                "type": "int"
+              },
+              {
+                "name": "u_birthday",
+                "type": "date"
+              },
+              {
+                "name": "u_edu",
+                "type": "int"
+              },
+              {
+                "name": "u_school",
+                "type": "varchar"
+              },
+              {
+                "name": "work_year",
+                "type": "int"
+              },
+              {
+                "name": "u_industry",
+                "type": "varchar"
+              },
+              {
+                "name": "u_professional",
+                "type": "varchar"
+              },
+              {
+                "name": "u_srouce",
+                "type": "int"
+              },
+              {
+                "name": "u_tel",
+                "type": "varchar"
+              },
+              {
+                "name": "u_qq",
+                "type": "varchar"
+              },
+              {
+                "name": "work_experience",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "u_zhuanye",
+                "type": "varchar"
+              },
+              {
+                "name": "u_evaluation",
+                "type": "varchar"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "u_email",
+                "type": "varchar"
+              },
+              {
+                "name": "province",
+                "type": "varchar"
+              },
+              {
+                "name": "city",
+                "type": "varchar"
+              },
+              {
+                "name": "u_good_at_skills",
+                "type": "varchar"
+              },
+              {
+                "name": "u_marry_status",
+                "type": "tinyint"
+              },
+              {
+                "name": "u_native_place",
+                "type": "varchar"
+              },
+              {
+                "name": "u_rs_evaluation",
+                "type": "varchar"
+              },
+              {
+                "name": "u_bm_evaluation",
+                "type": "varchar"
+              },
+              {
+                "name": "u_home_address",
+                "type": "varchar"
+              },
+              {
+                "name": "u_post_match",
+                "type": "tinyint"
+              },
+              {
+                "name": "u_interview_time",
+                "type": "date"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

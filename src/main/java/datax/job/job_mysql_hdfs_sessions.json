@@ -1,0 +1,86 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "session_id",
+              "uid",
+              "hash",
+              "online_time",
+              "create_time",
+              "update_time",
+              "remove_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "sessions"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_sessions",
+            "fileName": "sessions",
+            "column": [
+              {
+                "name": "session_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "hash",
+                "type": "varchar"
+              },
+              {
+                "name": "online_time",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

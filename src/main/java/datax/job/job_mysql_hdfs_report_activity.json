@@ -1,0 +1,191 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "report_id",
+              "k1",
+              "k2",
+              "k3",
+              "k4",
+              "k5",
+              "k6",
+              "k7",
+              "k8",
+              "k9",
+              "k10",
+              "k11",
+              "k12",
+              "k13",
+              "k14",
+              "k15",
+              "k16",
+              "k17",
+              "k18",
+              "k19",
+              "k20",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "uid",
+              "c_uid",
+              "c_sid"
+            ],
+            "splitPk": "report_id",
+            "connection": [
+              {
+                "table": [
+                  "report_activity"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_activity",
+            "fileName": "report_activity",
+            "column": [
+              {
+                "name": "report_id",
+                "type": "INT"
+              },
+              {
+                "name": "k1",
+                "type": "int"
+              },
+              {
+                "name": "k2",
+                "type": "int"
+              },
+              {
+                "name": "k3",
+                "type": "int"
+              },
+              {
+                "name": "k4",
+                "type": "int"
+              },
+              {
+                "name": "k5",
+                "type": "int"
+              },
+              {
+                "name": "k6",
+                "type": "int"
+              },
+              {
+                "name": "k7",
+                "type": "int"
+              },
+              {
+                "name": "k8",
+                "type": "int"
+              },
+              {
+                "name": "k9",
+                "type": "int"
+              },
+              {
+                "name": "k10",
+                "type": "int"
+              },
+              {
+                "name": "k11",
+                "type": "int"
+              },
+              {
+                "name": "k12",
+                "type": "int"
+              },
+              {
+                "name": "k13",
+                "type": "int"
+              },
+              {
+                "name": "k14",
+                "type": "int"
+              },
+              {
+                "name": "k15",
+                "type": "int"
+              },
+              {
+                "name": "k16",
+                "type": "int"
+              },
+              {
+                "name": "k17",
+                "type": "int"
+              },
+              {
+                "name": "k18",
+                "type": "int"
+              },
+              {
+                "name": "k19",
+                "type": "int"
+              },
+              {
+                "name": "k20",
+                "type": "int"
+              },
+              {
+                "name": "crete_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

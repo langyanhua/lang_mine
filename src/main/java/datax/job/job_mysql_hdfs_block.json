@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "bid",
+              "block_type",
+              "block_name",
+              "block_title",
+              "summary",
+              "ext_fields",
+              "shownum",
+              "cache_time",
+              "page",
+              "area",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "picwidth",
+              "picheight",
+              "target",
+              "cachetime",
+              "param"
+            ],
+            "splitPk": "bid",
+            "connection": [
+              {
+                "table": [
+                  "`block`"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_block",
+            "fileName": "block",
+            "column": [
+              {
+                "name": "bid",
+                "type": "int"
+              },
+              {
+                "name": "block_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "block_name",
+                "type": "varchar"
+              },
+              {
+                "name": "block_title",
+                "type": "varchar"
+              },
+              {
+                "name": "summary",
+                "type": "varchar"
+              },
+              {
+                "name": "ext_fields",
+                "type": "varchar"
+              },
+              {
+                "name": "shownum",
+                "type": "int"
+              },
+              {
+                "name": "cache_time",
+                "type": "int"
+              },
+              {
+                "name": "page",
+                "type": "int"
+              },
+              {
+                "name": "area",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "picwidth",
+                "type": "int"
+              },
+              {
+                "name": "picheight",
+                "type": "int"
+              },
+              {
+                "name": "target",
+                "type": "varchar"
+              },
+              {
+                "name": "cachetime",
+                "type": "int"
+              },
+              {
+                "name": "param",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

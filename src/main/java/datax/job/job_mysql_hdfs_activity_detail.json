@@ -1,0 +1,91 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "receive_id",
+              "activity_id",
+              "uid",
+              "receive_date",
+              "receive_month",
+              "status",
+              "is_handle",
+              "handel_date"
+            ],
+            "splitPk": "uid",
+            "connection": [
+              {
+                "table": [
+                  "activity_detail"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_activity_detail",
+            "fileName": "activity_detail",
+            "column": [
+              {
+                "name": "receive_id",
+                "type": "INT"
+              },
+              {
+                "name": "activity_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "receive_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "receive_month",
+                "type": "INT"
+              },
+              {
+                "name": "status",
+                "type": "TINYINT"
+              },
+              {
+                "name": "is_handle",
+                "type": "TINYINT"
+              },
+              {
+                "name": "handel_date",
+                "type": "INT"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

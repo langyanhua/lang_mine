@@ -1,0 +1,156 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "soft_title",
+              "pkg_name",
+              "push_auth",
+              "version_code",
+              "c_uid",
+              "c_sid",
+              "bd_id",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "remarks",
+              "template",
+              "customer_service",
+              "website",
+              "company",
+              "qq_appip",
+              "qq_appkey",
+              "wx_appid",
+              "wx_appsecret"
+            ],
+            "splitPk": "id",
+            "connection": [
+              {
+                "table": [
+                  "an_custom_pkg"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_an_custom_pkg",
+            "fileName": "an_custom_pkg",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "soft_title",
+                "type": "varchar"
+              },
+              {
+                "name": "pkg_name",
+                "type": "varchar"
+              },
+              {
+                "name": "push_auth",
+                "type": "varchar"
+              },
+              {
+                "name": "version_code",
+                "type": "int"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "bd_id",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "remarks",
+                "type": "varchar"
+              },
+              {
+                "name": "template",
+                "type": "varchar"
+              },
+              {
+                "name": "customer_service",
+                "type": "varchar"
+              },
+              {
+                "name": "website",
+                "type": "varchar"
+              },
+              {
+                "name": "company",
+                "type": "varchar"
+              },
+              {
+                "name": "qq_appip",
+                "type": "varchar"
+              },
+              {
+                "name": "qq_appkey",
+                "type": "varchar"
+              },
+              {
+                "name": "wx_appid",
+                "type": "varchar"
+              },
+              {
+                "name": "wx_appsecret",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

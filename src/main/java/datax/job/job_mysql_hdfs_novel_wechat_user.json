@@ -1,0 +1,77 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "openid",
+              "reg_time",
+              "reg_ip",
+              "c_uid",
+              "c_sid"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "novel_wechat_user"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_novel_wechat_user",
+            "fileName": "novel_wechat_user",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "openid",
+                "type": "varchar"
+              },
+              {
+                "name": "reg_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

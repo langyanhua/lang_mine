@@ -1,0 +1,126 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "report_date",
+              "c_uid",
+              "c_sid",
+              "v",
+              "ver",
+              "k1",
+              "kk1",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "hash",
+              "hash_0",
+              "hash_1"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "report_app_ver"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_app_ver",
+            "fileName": "report_app_ver",
+            "column": [
+              {
+                "name": "auto_uid",
+                "type": "INT"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "v",
+                "type": "int"
+              },
+              {
+                "name": "ver",
+                "type": "varchar"
+              },
+              {
+                "name": "k1",
+                "type": "int"
+              },
+              {
+                "name": "kk1",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "hash",
+                "type": "varchar"
+              },
+              {
+                "name": "hash_0",
+                "type": "bigint"
+              },
+              {
+                "name": "hash_1",
+                "type": "bigint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

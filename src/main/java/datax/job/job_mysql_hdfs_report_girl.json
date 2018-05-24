@@ -1,0 +1,131 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "report_id",
+              "report_date",
+              "c_uid",
+              "c_sid",
+              "uct",
+              "k1",
+              "k2",
+              "k3",
+              "k4",
+              "k5",
+              "k6",
+              "k7",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status"
+            ],
+            "splitPk": "report_id",
+            "connection": [
+              {
+                "table": [
+                  "report_girl"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_girl",
+            "fileName": "report_girl",
+            "column": [
+              {
+                "name": "report_id",
+                "type": "INT"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "uct",
+                "type": "int"
+              },
+              {
+                "name": "k1",
+                "type": "int"
+              },
+              {
+                "name": "k2",
+                "type": "int"
+              },
+              {
+                "name": "k3",
+                "type": "int"
+              },
+              {
+                "name": "k4",
+                "type": "int"
+              },
+              {
+                "name": "k5",
+                "type": "int"
+              },
+              {
+                "name": "k6",
+                "type": "int"
+              },
+              {
+                "name": "k7",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

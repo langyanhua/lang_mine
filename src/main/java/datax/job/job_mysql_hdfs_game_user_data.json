@@ -1,0 +1,71 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "free_paodan",
+              "paodan",
+              "xiaohao_paodan"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "game_user_data"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_game_user_data",
+            "fileName": "game_user_data",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "free_paodan",
+                "type": "INT"
+              },
+              {
+                "name": "paodan",
+                "type": "INT"
+              },
+              {
+                "name": "xiaohao_paodan",
+                "type": "INT"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

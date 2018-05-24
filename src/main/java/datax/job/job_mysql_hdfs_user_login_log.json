@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "login_type",
+              "login_time",
+              "login_ip",
+              "login_result",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "user_login_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_login_log",
+            "fileName": "user_login_log",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "login_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "login_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "login_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "login_result",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

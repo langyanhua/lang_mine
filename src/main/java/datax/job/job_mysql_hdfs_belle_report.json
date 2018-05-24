@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "uid",
+              "group_id",
+              "chat_redbag_num",
+              "chat_redbag_money",
+              "gift_redbag_num",
+              "gift_redbag_num_unreceive",
+              "gift_redbag_num_receiveed",
+              "gift_redbag_money",
+              "gift_redbag_money_unreceive",
+              "gift_redbag_money_receiveed",
+              "status",
+              "add_time",
+              "update_time",
+              "salary",
+              "paystatus",
+              "tax",
+              "paymoney",
+              "groupdivide"
+            ],
+            "splitPk": "id",
+            "connection": [
+              {
+                "table": [
+                  "belle_report"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_belle_report",
+            "fileName": "belle_report",
+            "column": [
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "group_id",
+                "type": "int"
+              },
+              {
+                "name": "chat_redbag_num",
+                "type": "int"
+              },
+              {
+                "name": "chat_redbag_money",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_num",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_num_unreceive",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_num_receiveed",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_money",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_money_unreceive",
+                "type": "int"
+              },
+              {
+                "name": "gift_redbag_money_receiveed",
+                "type": "int"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "add_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "int"
+              },
+              {
+                "name": "salary",
+                "type": "int"
+              },
+              {
+                "name": "paystatus",
+                "type": "tinyint"
+              },
+              {
+                "name": "tax",
+                "type": "int"
+              },
+              {
+                "name": "paymoney",
+                "type": "int"
+              },
+              {
+                "name": "groupdivide",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

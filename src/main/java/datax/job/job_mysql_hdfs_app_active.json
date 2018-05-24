@@ -1,0 +1,113 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "hash",
+              "hash_0",
+              "hash_1",
+              "c_uid",
+              "c_sid",
+              "soft_id",
+              "imsi",
+              "mac",
+              "cell_phone",
+              "ip",
+              "v",
+              "create_time"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "app_active"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_app_active",
+            "fileName": "app_active",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "hash",
+                "type": "varchar"
+              },
+              {
+                "name": "hash_0",
+                "type": "bigint"
+              },
+              {
+                "name": "hash_1",
+                "type": "bigint"
+              },
+              {
+                "name": "c_uid",
+                "type": "INT"
+              },
+              {
+                "name": "c_sid",
+                "type": "INT"
+              },
+              {
+                "name": "soft_id",
+                "type": "varchar"
+              },
+              {
+                "name": "imsi",
+                "type": "varchar"
+              },{
+                "name": "mac",
+                "type": "varchar"
+              },
+              {
+                "name": "cell_phone",
+                "type": "varchar"
+              },
+              {
+                "name": "ip",
+                "type": "varchar"
+              },{
+                "name": "v",
+                "type": "INT"
+              },{
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

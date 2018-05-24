@@ -1,0 +1,116 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "pid",
+              "ip",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "type",
+              "gender",
+              "deliver_date",
+              "deliver_no",
+              "deliver_com"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_precious_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_precious_log",
+            "fileName": "user_precious_log",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "pid",
+                "type": "int"
+              },
+              {
+                "name": "ip",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "gender",
+                "type": "tinyint"
+              },
+              {
+                "name": "deliver_date",
+                "type": "varchar"
+              },
+              {
+                "name": "deliver_no",
+                "type": "varchar"
+              },
+              {
+                "name": "deliver_com",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

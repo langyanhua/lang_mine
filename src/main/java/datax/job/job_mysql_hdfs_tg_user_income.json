@@ -1,0 +1,81 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "user_id",
+              "tg_money",
+              "money_total",
+              "report_date",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "tg_user_income"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_tg_user_income",
+            "fileName": "tg_user_income",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "user_id",
+                "type": "int"
+              },
+              {
+                "name": "tg_money",
+                "type": "double"
+              },
+              {
+                "name": "money_total",
+                "type": "double"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

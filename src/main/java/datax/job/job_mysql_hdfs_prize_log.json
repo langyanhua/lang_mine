@@ -1,0 +1,156 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "prizeid",
+              "uid",
+              "top_hour",
+              "prize_date",
+              "create_time",
+              "phone",
+              "status",
+              "express_company",
+              "express_id",
+              "express_no",
+              "express_status",
+              "get_time",
+              "del_time",
+              "win_time",
+              "imei",
+              "imsi",
+              "ip",
+              "mac",
+              "hash_0",
+              "hash_1"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "prize_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_prize_log",
+            "fileName": "prize_log",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "prizeid",
+                "type": "int"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "top_hour",
+                "type": "tinyint"
+              },
+              {
+                "name": "prize_date",
+                "type": "date"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "phone",
+                "type": "bigint"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "express_company",
+                "type": "varchar"
+              },
+              {
+                "name": "express_id",
+                "type": "varchar"
+              },
+              {
+                "name": "express_no",
+                "type": "varchar"
+              },
+              {
+                "name": "express_status",
+                "type": "tinyint"
+              },
+              {
+                "name": "get_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "del_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "win_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "imei",
+                "type": "varchar"
+              },
+              {
+                "name": "imsi",
+                "type": "varchar"
+              },
+              {
+                "name": "ip",
+                "type": "varchar"
+              },
+              {
+                "name": "mac",
+                "type": "varchar"
+              },
+              {
+                "name": "hash_0",
+                "type": "bigint"
+              },
+              {
+                "name": "hash_1",
+                "type": "bigint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

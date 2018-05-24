@@ -1,0 +1,86 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "domain",
+              "domain_key",
+              "beian",
+              "beian_company",
+              "iplist",
+              "status"
+,            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "mp_domain"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_mp_domain",
+            "fileName": "mp_domain",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "domain",
+                "type": "varchar"
+              },
+              {
+                "name": "domain_key",
+                "type": "varchar"
+              },
+              {
+                "name": "beian",
+                "type": "varchar"
+              },
+              {
+                "name": "beian_company",
+                "type": "int"
+              },
+              {
+                "name": "iplist",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

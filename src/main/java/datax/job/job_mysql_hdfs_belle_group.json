@@ -1,0 +1,110 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "group_name",
+              "create_time",
+              "status",
+              "accountname",
+              "accountnum",
+              "bank",
+              "type",
+              "salary",
+              "fapiao",
+              "belle_salary"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "belle_group"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_belle_group",
+            "fileName": "belle_group",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "group_name",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "accountname",
+                "type": "varchar"
+              },
+              {
+                "name": "accountnum",
+                "type": "varchar"
+              },
+              {
+                "name": "bank",
+                "type": "varchar"
+              },
+              {
+                "name": "subbank",
+                "type": "varchar"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "salary",
+                "type": "tinyint"
+              },
+              {
+                "name": "fapiao",
+                "type": "tinyint"
+              },
+              {
+                "name": "belle_salary",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

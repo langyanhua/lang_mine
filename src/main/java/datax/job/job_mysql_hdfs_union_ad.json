@@ -1,0 +1,111 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "ad_type",
+              "title",
+              "imgUrl",
+              "link",
+              "day_num",
+              "pkg_name",
+              "weight",
+              "price",
+              "flag",
+              "create_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "union_ad"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_union_ad",
+            "fileName": "union_ad",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "ad_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "title",
+                "type": "varchar"
+              },
+              {
+                "name": "imgUrl",
+                "type": "varchar"
+              },
+              {
+                "name": "link",
+                "type": "varchar"
+              },
+              {
+                "name": "day_num",
+                "type": "int"
+              },
+              {
+                "name": "pkg_name",
+                "type": "varchar"
+              },
+              {
+                "name": "weight",
+                "type": "float"
+              },
+              {
+                "name": "price",
+                "type": "float"
+              },
+              {
+                "name": "flag",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

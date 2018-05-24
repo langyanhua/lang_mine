@@ -1,0 +1,125 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "spread_id",
+              "nickname",
+              "avatar",
+              "photo1",
+              "photo2",
+              "photo3",
+              "photo4",
+              "name",
+              "age",
+              "sex",
+              "address",
+              "url",
+              "uid",
+              "sign",
+              "add_time"
+            ],
+            "splitPk": "spread_id",
+            "connection": [
+              {
+                "table": [
+                  "api_spread"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_api_spread",
+            "fileName": "api-spread",
+            "column": [
+              {
+                "name": "spread_id",
+                "type": "INT"
+              },
+              {
+                "name": "nickname",
+                "type": "varchar"
+              },
+              {
+                "name": "avatar",
+                "type": "varchar"
+              },
+              {
+                "name": "photo1",
+                "type": "varchar"
+              },
+              {
+                "name": "photo2",
+                "type": "varchar"
+              },
+              {
+                "name": "photo3",
+                "type": "varchar"
+              },
+              {
+                "name": "photo4",
+                "type": "varchar"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "age",
+                "type": "int"
+              },
+              {
+                "name": "sex",
+                "type": "varchar"
+              },
+              {
+                "name": "address",
+                "type": "varchar"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },{
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "sign",
+                "type": "varchar"
+              },
+              {
+                "name": "add_time",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

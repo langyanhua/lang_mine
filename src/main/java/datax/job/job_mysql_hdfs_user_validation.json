@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "id_num",
+              "id_front_img",
+              "id_back_img",
+              "face_img",
+              "paytype",
+              "status",
+              "create_time",
+              "reason"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_validation"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_validation",
+            "fileName": "user_validation",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "id_num",
+                "type": "varchar"
+              },
+              {
+                "name": "id_front_img",
+                "type": "varchar"
+              },
+              {
+                "name": "id_back_img",
+                "type": "varchar"
+              },
+              {
+                "name": "face_img",
+                "type": "varchar"
+              },
+              {
+                "name": "paytype",
+                "type": "tinyint"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "reason",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

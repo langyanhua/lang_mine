@@ -1,0 +1,116 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "key_id",
+              "reply_id",
+              "type",
+              "text_msg",
+              "url",
+              "time",
+              "size",
+              "title",
+              "width",
+              "height",
+              "video_img",
+              "create_time"
+            ],
+            "splitPk": "id",
+            "connection": [
+              {
+                "table": [
+                  "reply_keyword_tpl"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_reply_keyword_tpl",
+            "fileName": "reply_keyword_tpl",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "key_id",
+                "type": "int"
+              },
+              {
+                "name": "reply_id",
+                "type": "int"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "text_msg",
+                "type": "varchar"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },
+              {
+                "name": "time",
+                "type": "int"
+              },
+              {
+                "name": "size",
+                "type": "int"
+              },
+              {
+                "name": "title",
+                "type": "varchar"
+              },
+              {
+                "name": "width",
+                "type": "int"
+              },
+              {
+                "name": "hight",
+                "type": "int"
+              },
+              {
+                "name": "video_img",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

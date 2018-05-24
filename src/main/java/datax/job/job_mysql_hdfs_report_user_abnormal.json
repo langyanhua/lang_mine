@@ -1,0 +1,116 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "report_date",
+              "uid",
+              "sayhello_total",
+              "msg_total",
+              "msg_gay",
+              "msg_heterd",
+              "sayhello_gay",
+              "sayhello_heterd",
+              "online",
+              "register_ip",
+              "login_ip",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "report_user_abnormal"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_user_abnormal",
+            "fileName": "report_user_abnormal",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "uid",
+                "type": "bigint"
+              },
+              {
+                "name": "sayhello_total",
+                "type": "bigint"
+              },
+              {
+                "name": "msg_total",
+                "type": "bigint"
+              },
+              {
+                "name": "msg_gay",
+                "type": "bigint"
+              },
+              {
+                "name": "msg_heterd",
+                "type": "bigint"
+              },
+              {
+                "name": "sayhello_gay",
+                "type": "bigint"
+              },
+              {
+                "name": "sayhello_heterd",
+                "type": "bigint"
+              },
+              {
+                "name": "online",
+                "type": "bigint"
+              },
+              {
+                "name": "register_ip",
+                "type": "bigint"
+              },
+              {
+                "name": "login_ip",
+                "type": "bigint"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

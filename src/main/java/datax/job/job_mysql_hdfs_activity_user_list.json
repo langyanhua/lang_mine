@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "product_id",
+              "paymoney",
+              "activity_month",
+              "change_tm",
+              "receive_first_tm",
+              "receive_last_tm",
+              "charge_log_id",
+              "platform"
+            ],
+            "splitPk": "uid",
+            "connection": [
+              {
+                "table": [
+                  "activity_user_list"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_activity_user_list",
+            "fileName": "activity_user_list",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "product_id",
+                "type": "int"
+              },
+              {
+                "name": "paymoney",
+                "type": "int"
+              },
+              {
+                "name": "activity_month",
+                "type": "int"
+              },
+              {
+                "name": "change_tm",
+                "type": "timestamp"
+              },
+              {
+                "name": "receive_first_tm",
+                "type": "timestamp"
+              },
+              {
+                "name": "receive_last_tm",
+                "type": "timestamp"
+              },
+              {
+                "name": "charge_log_id",
+                "type": "int"
+              },
+              {
+                "name": "platform",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

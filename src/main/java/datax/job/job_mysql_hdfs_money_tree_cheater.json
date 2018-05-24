@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "report_date",
+              "uid",
+              "money",
+              "tree_money",
+              "share_num",
+              "charge_money",
+              "withdraw_sum",
+              "share_pay",
+              "update_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "money_tree_cheater"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_money_tree_cheater",
+            "fileName": "money_tree_cheater",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "money",
+                "type": "int"
+              },
+              {
+                "name": "tree_money",
+                "type": "int"
+              },
+              {
+                "name": "share_num",
+                "type": "int"
+              },
+              {
+                "name": "charge_money",
+                "type": "int"
+              },
+              {
+                "name": "withdraw_sum",
+                "type": "int"
+              },
+              {
+                "name": "share_pay",
+                "type": "int"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

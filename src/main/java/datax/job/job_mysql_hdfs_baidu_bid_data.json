@@ -1,0 +1,81 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "bidid",
+              "impid",
+              "click_num",
+              "view_num",
+              "report_date"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "baidu_bid_data"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_baidu_bid_data",
+            "fileName": "baidu_bid_data",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "int"
+              },
+              {
+                "name": "bidid",
+                "type": "int"
+              },
+              {
+                "name": "impid",
+                "type": "varchar"
+              },
+              {
+                "name": "click_num",
+                "type": "int"
+              },
+              {
+                "name": "view_num",
+                "type": "int"
+              },
+              {
+                "name": "report_date",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

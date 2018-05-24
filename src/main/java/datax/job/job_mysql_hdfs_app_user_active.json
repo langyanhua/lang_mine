@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "c_uid",
+              "c_sid",
+              "soft_id",
+              "imsi",
+              "mac",
+              "cell_phone",
+              "ip",
+              "create_time"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "app_user_active"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_app_user_active",
+            "fileName": "app_user_active",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "int"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "c_uid",
+                "type": "int"
+              },
+              {
+                "name": "c_sid",
+                "type": "int"
+              },
+              {
+                "name": "soft_id",
+                "type": "varchar"
+              },
+              {
+                "name": "imsi",
+                "type": "varchar"
+              },
+              {
+                "name": "mac",
+                "type": "varchar"
+              },
+              {
+                "name": "cell_phone",
+                "type": "varchar"
+              },
+              {
+                "name": "ip",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

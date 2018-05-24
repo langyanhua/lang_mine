@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "rq_marry",
+              "rq_age_min",
+              "rq_age_max",
+              "rq_province",
+              "rq_city",
+              "rq_edu",
+              "rq_income",
+              "rq_height_min",
+              "rq_height_max"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_require"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_require",
+            "fileName": "user_require",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "rq_marry",
+                "type": "int"
+              },
+              {
+                "name": "rq_age_min",
+                "type": "int"
+              },
+              {
+                "name": "rq_age_max",
+                "type": "int"
+              },
+              {
+                "name": "rq_province",
+                "type": "int"
+              },
+              {
+                "name": "rq_city",
+                "type": "int"
+              },
+              {
+                "name": "rq_edu",
+                "type": "int"
+              },
+              {
+                "name": "rq_income",
+                "type": "int"
+              },
+              {
+                "name": "rq_height_min",
+                "type": "int"
+              },
+              {
+                "name": "rq_height_max",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

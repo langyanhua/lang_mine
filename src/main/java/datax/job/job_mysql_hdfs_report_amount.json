@@ -1,0 +1,136 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "app_id",
+              "upay",
+              "weiying",
+              "sp",
+              "sp_s",
+              "soft",
+              "desk",
+              "push_1",
+              "push_2",
+              "push_3",
+              "push_4",
+              "other_1",
+              "other_2",
+              "other_3",
+              "amount",
+              "report_date"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "report_amount"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_amount",
+            "fileName": "report_amount",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "app_id",
+                "type": "int"
+              },
+              {
+                "name": "uplay",
+                "type": "float"
+              },
+              {
+                "name": "weiying",
+                "type": "float"
+              },
+              {
+                "name": "sp",
+                "type": "float"
+              },
+              {
+                "name": "sp_s",
+                "type": "float"
+              },
+              {
+                "name": "soft",
+                "type": "float"
+              },
+              {
+                "name": "desk",
+                "type": "float"
+              },
+              {
+                "name": "push_1",
+                "type": "float"
+              },
+              {
+                "name": "push_2",
+                "type": "float"
+              },
+              {
+                "name": "push_3",
+                "type": "float"
+              },
+              {
+                "name": "push_4",
+                "type": "float"
+              },
+              {
+                "name": "other_1",
+                "type": "float"
+              },
+              {
+                "name": "other_2",
+                "type": "float"
+              },
+              {
+                "name": "other_3",
+                "type": "float"
+              },
+              {
+                "name": "amount",
+                "type": "float"
+              },
+              {
+                "name": "report_date",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

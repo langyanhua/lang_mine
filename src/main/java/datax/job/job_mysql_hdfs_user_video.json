@@ -1,0 +1,116 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "name",
+              "uid",
+              "video",
+              "pic",
+              "duration",
+              "viewtimes",
+              "`desc`",
+              "cost",
+              "giftid",
+              "giftnum",
+              "create_time",
+              "status"
+            ],
+            "splitPk": "id",
+            "connection": [
+              {
+                "table": [
+                  "user_video"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_video",
+            "fileName": "user_video",
+            "column": [
+              {
+                "name": "int",
+                "type": "INT"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "video",
+                "type": "varchar"
+              },
+              {
+                "name": "pic",
+                "type": "varchar"
+              },
+              {
+                "name": "duration",
+                "type": "int"
+              },
+              {
+                "name": "viewtimes",
+                "type": "int"
+              },
+              {
+                "name": "desc",
+                "type": "varchar"
+              },
+              {
+                "name": "cost",
+                "type": "int"
+              },
+              {
+                "name": "giftid",
+                "type": "int"
+              },
+              {
+                "name": "giftnum",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

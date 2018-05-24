@@ -1,0 +1,3531 @@
+create table if not exists www_user(
+    uid bigint,
+    username varchar(50),
+    cell_phone bigint,
+    password varchar(40),
+    password_m varchar(6),
+    kf_id bigint,
+    group tinyint,
+    reg_time bigint,
+    login_time bigint,
+    login_count bigint,
+    online_time bigint,
+    offline_ts bigint,
+    reg_ip varchar(20),
+    login_ip varchar(20),
+    upgrade_start bigint,
+    upgrade_end bigint,
+    credit bigint,
+    money double,
+    charge_count bigint,
+    channel_uid bigint,
+    channel_sid bigint,
+    openid varchar(32),
+    token varchar(32),
+    user_client_type tinyint,
+    recommended tinyint,
+    say_hi_recommended tinyint,
+    isvip tinyint,
+    vip_start bigint,
+    vip_end bigint,
+    ycoin bigint,
+    real_reg_time timestamp,
+    create_time timestamp,
+    status tinyint,
+    is_bind_roes tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_app_ver(
+	auto_id int,
+	app_type tinyint,
+	ver int,
+	ver_text varchar(20),
+	title varchar(50),
+	url varchar(255),
+	summary varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_app_ver_channel(
+	c_uid int,
+	c_sid int,
+	app_type tinyint,
+	ver int,
+	ver_text varchar(20),
+	force tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_app_ver_new(
+	auto_id int,
+	name varchar(100),
+	packname varchar(100),
+	app_key varchar(100),
+	ver int,
+	ver_text varchar(20),
+	c_uid int,
+	c_sid int,
+	domains varchar(400),
+	url varchar(255),
+	suammary varchar(500),
+	update_time timestamp,
+	force tinyint,
+	status tinyint,
+	start_uid int,
+	end_uid int,
+	isvip tinyint,
+	regdays int,
+	scheme varchar(255),
+	province int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_app_version(
+	auto_id int,
+	app_type tinyint,
+	c_uid int,
+	c_sid int,
+	download_count int,
+	install_count int,
+	ver int,
+	ver_text varchar(500),
+	title varchar(255),
+	url varchar(255),
+	summary varchar(65355),
+	k1 int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_area(
+	id int,
+	areaID varchar(50),
+	area varchar(60),
+	father varchar(6)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_article_info(
+	auto_id int,
+	title varchar(100),
+	desp varchar(65355),
+	imgUrl varchar(255),
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_back_domain(
+	id int,
+	type tinyint,
+	doamin_url varchar(30),
+	url_describe varchar(50),
+	bd_id int,
+	create_time timestamp,
+	status tinyint,
+	changenum int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_back_domain_history(
+	id int,
+	bid int,
+	bd_id int,
+	distribute_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_baidu_bid(
+	auto_id int,
+	title varchar(255),
+	st int,
+	price int,
+	attr int,
+	admt int,
+	adm varchar(500),
+	adi varchar(255),
+	adicon varchar(255),
+	adt varchar(255),
+	ads varchar(255),
+	cat int,
+	h int,
+	w int,
+	adct int,
+	bundle varchar(255),
+	adtm int,
+	adcurl varchar(255),
+	adomain varchar(255),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_baidu_bid_data(
+	auto_id int,
+	bidid int,
+	impid varchar(100),
+	click_num int,
+	view_num int,
+	report_date timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_baidu_bid_price(
+	auto_id INT,
+	bidid varchar(100),
+	impid varchar(100),
+	wp varchar(100),
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_baidu_login(
+	bid BIGINT,
+	uid int,
+	pass varchar(255)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_behavior(
+	auto_id BIGINT,
+	name varchar(50)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_belle_group(
+	id INT,
+	group_name varchar(50),
+	create_time timestamp,
+	status tinyint,
+	accountname varchar(20),
+	accountnum varchar(50),
+	bank varchar(50),
+	subbank varchar(50),
+	type tinyint,
+	salary tinyint,
+	fapiao tinyint,
+	belle_salary tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_belle_group_report(
+	gruop_id int,
+	belle_num int,
+	android_server_num int,
+	ios_server_num int,
+	server_num int,
+	android_app_num int,
+	ios_app_num int,
+	app_num int,
+	t_1 int,
+	t_2 int,
+	t_3 int,
+	t_4 int,
+	g_1 int,
+	g_2 int,
+	g_3 int,
+	g_4 int,
+	view_t_1 int,
+	view_t_2 int,
+	view_t_3 int,
+	view_t_4 int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_belle_group_to_user(
+	id int,
+	uid int,
+	group_id int,
+	groupsalary int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_belle_report(
+	id int,
+	uid int,
+	group_id int,
+	chat_redbag_num int,
+	chat_redbag_money int,
+	gift_redbag_num int,
+	gift_redbag_num_unreceive int,
+	gift_redbag_num_receiveed int,
+	gift_redbag_money int,
+	gift_redbag_money_unreceive int,
+	gift_redbag_money_receiveed int,
+	status tinyint,
+	add_time timestamp,
+	update_time int,
+	salary int,
+	paystatus tinyint,
+	tax int,
+	paymoney int,
+	groupdivide int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_block(
+	bid int,
+	block_type tinyint,
+	block_name varchar(255),
+	block_title varchar(65355),
+	summary varchar(65355),
+	ext_fields varchar(65355),
+	shownum int,
+	cache_time int,
+	page int,
+	area int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	picwidth int,
+	picheight int,
+	target varchar(255),
+	cachetime int,
+	param varchar(65355)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_block_item(
+	item_id int,
+	bid int,
+	id int,
+	idtype varchar(255),
+	itemtype tinyint,
+	title varchar(255),
+	url varchar(255),
+	pic varchar(255),
+	picfalg tinyint,
+	makethumb tinyint,
+	summary varchar(65355),
+	showstyle varchar(65355),
+	related varchar(65355),
+	fields varchar(65355),
+	`sort` int,
+	startdate int,
+	enddate int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	note varchar(65355),
+	position tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_channel_filter(
+	id int,
+	channel_id int,
+	type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_angelpay_user(
+	auto_id int,
+	uid int,
+	mobile varchar(11),
+	pan varchar(255),
+	idcard varchar(255),
+	real_name varchar(255),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_log(
+	auto_id int,
+	uid int,
+	order_no varchar(255),
+	order_subject varchar(255),
+	trade_no varchar(255),
+	order_body varchar(65355),
+	productid int,
+	money double,
+	money_real double,
+	credit int,
+	platform tinyint,
+	user_client_type tinyint,
+	error_code varchar(255),
+	robotid int,
+	tplid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_log_order(
+	auto_id int,
+	order_no varchar(255),
+	price int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_log_second(
+	auto_id INT,
+	order_no varchar(255),
+	num int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_sp_log(
+	auto_id int,
+	uid int,
+	sid int,
+	order_no varchar(255),
+	order_subject varchar(255),
+	trade_no varchar(255),
+	order_body varchar(65355),
+	productid int,
+	money double,
+	credit int,
+	platform tinyint,
+	user_client_type tinyint,
+	error_code varchar(255),
+	robotid int,
+	tplid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_user_first(
+	auto_id INT,
+	uid int,
+	num INT,
+	date_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_user_log(
+	auto_id INT,
+	uid int,
+	type INT,
+	date_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_charge_user_second(
+	auto_id INT,
+	uid int,
+	num INT,
+	date_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_city(
+	id INT,
+	cityID varchar(6),
+	city varchar(50),
+	father varchar(6)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table if not exists www_city_map(
+    id int,
+    city varchar(40),
+    province varchar(30),
+    lat double,
+    lng double,
+    bCity varchar(60),
+    bProvince varchar(30),
+    flag int
+)
+row format delimited fields terminated by '\1'
+stored as orc;
+create table IF NOT EXISTS www_code(
+	auto_id INT,
+	code_id int,
+	code_url varchar(500),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_complain(
+	id INT,
+	uid int,
+	complainant INT,
+	item int,
+	time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_complain_item(
+	id INT,
+	info varchar(255)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_constellation(
+	auto_id INT,
+	name varchar(10),
+	icon varchar(200),
+	starttime int,
+	endtime int,
+	character varchar(65355),
+	love varchar(65355),
+	keyword varchar(200)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_constellation_luck(
+	auto_id int,
+	type tinyint,
+	c_id int,
+	career tinyint,
+	job tinyint,
+	love tinyint,
+	health int,
+	discuss tinyint,
+	luck varchar(50),
+	luck_content varchar(65355),
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_deduction_money(
+	auto_id int,
+	uid int,
+	d_money double,
+	d_datetime date,
+	d_reason varchar(500),
+	status tinyint,
+	create_time timestamp,
+	is_chuli tinyint,
+	chuli_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_dev_user_wechat_list(
+	id int,
+	openid varchar(50),
+	isSubscribe tinyint,
+	lastdate int,
+	c_uid int,
+	c_sid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_diamand_log(
+	id int,
+	uid int,
+	num int,
+	type tinyint,
+	cid int,
+	glid int,
+	to_uid int,
+	giftid int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_down_count(
+	auto_id int,
+	c_uid int,
+	c_sid int,
+	num int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table www_feedback(
+    auto_id int,
+    uid int,
+    user_nickname varchar(50),
+    ip varchar(30),
+    user_agent varchar(200),
+    cell_phone bigint,
+    user_client_type tinyint,
+    contact varchar(255),
+    content varchar(65355),
+    create_time timestamp,
+    update_time timestamp,
+    remove_time timestamp,
+    status tinyint,
+    title varchar(255),
+    qq int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_film(
+	id INT,
+	title varchar(150),
+	pic varchar(150),
+	pic_big varchar(150),
+	playUrl varchar(50),
+	type varchar(150),
+	slide int,
+	slide_pic int,
+	play_times varchar(10),
+	cate tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_forbid_user_mac(
+	auto_id INT,
+	hash_0 bigint,
+	hash_1 bigint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_fruit_redbag(
+	id INT,
+	uid int,
+	money int,
+	create_time timestamp,
+	type tinyint,
+	status tinyint,
+	rank tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_fruit_withdraw(
+	id INT,
+	uid int,
+	money int,
+	accountname varchar(20),
+	accountnum varchar(50),
+	bank varchar(50),
+	status tinyint,
+	create_time timestamp,
+	handling_time timestamp,
+	sendnum int,
+	deduct_money int,
+	taxes int,
+	taxmoney int,
+	subbank varchar(255),
+	bankstatus tinyint,
+	paytype tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_prize_data(
+	auto_id INT,
+	prize_title varchar(50),
+	prize_cate tinyint,
+	prize_imUrl varchar(255),
+	prize_num int,
+	win_num int,
+	type tinyint,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_prize_win_log(
+	auto_id INT,
+	uid int,
+	prize_id int,
+	time int,
+	ip varchar(15),
+	status tinyint,
+	exchange_time int,
+	phone varchar(20),
+	express_company varchar(20),
+	express_id varchar(20),
+	express_no varchar(20),
+	express_status tinyint,
+	express_txt varchar(255)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_share_data(
+	auto_id INT,
+	uid int,
+	task_id int,
+	num int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_share_log(
+	auto_id INT,
+	uid int,
+	task_id int,
+	paodan int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_task_data(
+	auto_id BIGINT,
+	task_title varchar(50),
+	task_iconUrl varchar(255),
+	text_desc varchar(255),
+	button_desc varchar(255),
+	link_url varchar(255),
+	share_describe varchar(255),
+	paodan int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_game_user_data(
+	uid INT,
+	free_paodan INT,
+	paodan INT,
+	xiaohao_paodan INT
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_games(
+	auto_id INT,
+	type tinyint,
+	title varchar(50),
+	stitle varchar(100),
+	pic varchar(255),
+	url varchar(255),
+	indexnum tinyint,
+	ordernum int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_gift(
+	id INT,
+	name varchar(20),
+	img varchar(255),
+	cost int,
+	packet varchar(255),
+	send_num int,
+	create_time timestamp,
+	status tinyint,
+	sort int,
+	type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_gpay_charge_log(
+	auto_id INT,
+	tp tinyint,
+	order_no varchar(64),
+	money float,
+	status tinyint,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_h5_click_time(
+	uid INT,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_h5_login_tpl(
+	id INT,
+	c_uid int,
+	c_sid int,
+	tpl varchar(50),
+	oper int,
+	update_time timestamp,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_horoscopes(
+	auto_id INT,
+	femal int,
+	male int,
+	pairingIndex int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_iccid_list(
+	auto_id INT,
+	imsi varchar(50),
+	iccid varchar(50)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_image_md5(
+	md5 varchar(32),
+	sexy_flag tinyint,
+	ad_flag tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_importData_log(
+	auto_id INT,
+	uid int,
+	importData varchar(65355),
+	userAgent varchar(500),
+	ip varchar(15),
+	add_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_integral_app_log(
+	auto_id INT,
+	appid int,
+	uid int,
+	ycoin int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_integral_new_app(
+	auto_id INT,
+	name varchar(20),
+	gender tinyint,
+	type tinyint,
+	open_type tinyint,
+	per_hour tinyint,
+	pkgname varchar(100),
+	shorttitle varchar(50),
+	size float,
+	ycoin int,
+	url varchar(255),
+	imgurl varchar(255),
+	summary varchar(500),
+	bdid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	sort int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_ios_custom_pkg(
+	id INT,
+	soft_title varchar(60),
+	pkg_name varchar(200),
+	push_auth varchar(100),
+	tg_type varchar(20),
+	version_name varchar(20),
+	version_code int,
+	c_uid int,
+	c_sid int,
+	deduction float,
+	d_c_uid int,
+	d_c_sid int,
+	bd_id int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	remarks varchar(1000),
+	template varchar(150),
+	customer_service varchar(255),
+	website varchar(255),
+	company varchar(255),
+	qq_appip varchar(255),
+	qq_appkey varchar(255),
+	wx_appid varchar(255),
+	wx_appsecret varchar(255),
+	three_login tinyint,
+	account_type tinyint,
+	payset varchar(255),
+	market_version_code int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_ios_custom_pkg_log(
+	auto_id INT,
+	uid int,
+	pkg_id int,
+	type tinyint,
+	op_content varchar(2000),
+	ip varchar(50),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_ip_address_lib(
+	ip varchar(500),
+	country varchar(500),
+	country_id varchar(500),
+	area varchar(500),
+	area_id varchar(500),
+	region varchar(500),
+	region_id varchar(500),
+	city varchar(500),
+	city_id varchar(500),
+	isp_id varchar(500),
+	isp varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_joke(
+	auto_id INT,
+	title varchar(500),
+	imgUrl varchar(500),
+	content varchar(500),
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_keep_url(
+	id INT,
+	url varchar(500),
+	baseurl varchar(500),
+	checkurl varchar(500),
+	backupurl varchar(500),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_kf(
+	kf_id INT,
+	kf_user varchar(500),
+	kf_pwd varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_live_anchor(
+	id INT,
+	uid int,
+	kuplay_id int,
+	call varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_live_banner(
+	id INT,
+	describe varchar(500),
+	img varchar(500),
+	link varchar(500),
+	sort int,
+	status tinyint,
+	create_time date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_live_key_value(
+	key varchar(500),
+	value varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_login_equipment_log(
+	auto_id INT,
+	uid int,
+	imei varchar(500),
+	imsi varchar(500),
+	mac varchar(500),
+	ip varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_lucky(
+	auto_id INT,
+	name varchar(500),
+	thumb varchar(500),
+	market_price float,
+	description varchar(500),
+	num int,
+	sort int,
+	flag tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	reove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_lucky_log(
+	auto_id INT,
+	uid int,
+	luckid int,
+	ip varchar(500),
+	create_time timstamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	type tinyint,
+	gender tinyint,
+	phone varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_lucky_user(
+	auto_id INT,
+	uid int,
+	status tinyint,
+	create_time timestamp,
+	update_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_manager(
+	uid INT,
+	username varchar(500),
+	password varchar(500),
+	email varchar(500),
+	sex tinyint,
+	gid tinyint,
+	question varchar(500),
+	answer varchar(500),
+	sign varchar(500),
+	qq varchar(500),
+	cell_phone varchar(500),
+	avatar varchar(500),
+	birthday date,
+	login_type tinyint,
+	reg_time timestamp,
+	last_login_time timestamp,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_manager_action_log(
+	auto_id INT,
+	mid int,
+	uid int,
+	gender tinyint,
+	action int,
+	addtime timestamp,
+	ip varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_manager_group(
+	gid INT,
+	name varchar(500),
+	permits varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_manager_login_log(
+	auto_id INT,
+	uid int,
+	username varchar(500),
+	login_time timestamp,
+	login_ip varchar(500),
+	result tinyint,
+	comment varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_manager_operate_log(
+	id INT,
+	manager_id int,
+	operate_ip varchar(500),
+	operate_time timestamp,
+	module_name varchar(500),
+	target_id int,
+	data varchar(65355),
+	remark varchar(65355)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_money_tree_cheater(
+	id INT,
+	report_date date,
+	uid int,
+	money int,
+	tree_money int,
+	share_num int,
+	charge_money int,
+	withdraw_sum int,
+	share_pay int,
+	update_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mp_company(
+	auto_id INT,
+	company_name varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mp_domain(
+	auto_id INT,
+	domain varchar(500),
+	domain_key varchar(500),
+	beian varchar(500),
+	beian_company int,
+	iplist varchar(500),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mp_options(
+	auto_id INT,
+	bd_id int,
+	c_uid int,
+	wap_c_uid int,
+	company int,
+	master_domain int,
+	default_domain int,
+	formal_domain int,
+	robots_flag tinyint,
+	push_flag tinyint,
+	title varchar(500),
+	wechat_id varchar(500),
+	mchid varchar(500),
+	prefix varchar(500),
+	token varchar(500),
+	appid varchar(500),
+	appsecret varchar(500),
+	templateid varchar(500),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mp_options_child(
+	auto_id INT,
+	mp_options_id int,
+	c_sid int,
+	bd_id int,
+	robots_flag tinyint,
+	push_flag tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mpay_charge_log(
+	auto_id INT,
+	tp tinyint,
+	order_no varchar(500),
+	money float,
+	status tinyint,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mpay_charge_log_1(
+	order_no INT,
+	money float
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl(
+	msg_id INT,
+	type tinyint,
+	to_gender tinyint,
+	msg varchar(65355),
+	rel_id tinyint,
+	msg_reply varchar(65355),
+	ver int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	hour_start int,
+	hour_end int,
+	voice_url varchar(500),
+	voice_time int,
+	voice_userid int,
+	video_url varchar(500),
+	video_img varchar(500),
+	video_time int,
+	video_size int,
+	video_width int,
+	video_height int,
+	video_userid int,
+	video_title varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_new(
+	auto_id INT,
+	msg_tpl_id int,
+	ver int,
+	type tinyint,
+	text_msg varchar(500),
+	voice_url varchar(500),
+	voice_time int,
+	voice_title varchar(500),
+	video_url varchar(500),
+	video_img varchar(500),
+	video_time int,
+	video_size int,
+	video_width int,
+	video_height int,
+	video_title varchar(500),
+	img_url varchar(500),
+	img_title varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_new_cp(
+	auto_id INT,
+	msg_tpl_id int,
+	ver int,
+	type tinyint,
+	text_msg varchar(500),
+	voice_url varchar(500),
+	voice_time int,
+	voice_title varchar(500),
+	video_url varchar(500),
+	video_img varchar(500),
+	video_time int,
+	video_size int,
+	video_width int,
+	video_height int,
+	video_title varchar(500),
+	img_url varchar(500),
+	img_title varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_new_en(
+	auto_id INT,
+	msg_tpl_id int,
+	ver int,
+	type tinyint,
+	text_msg varchar(500),
+	voice_url varchar(500),
+	voice_time int,
+	video_url varchar(500),
+	video_img varchar(500),
+	video_time int,
+	video_size int,
+	video_width int,
+	video_height int,
+	video_title varchar(500),
+	img_url varchar(500),
+	img_title varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_show_date(
+	auto_id INT,
+	show_date date,
+	show_date_type int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_show_date_type(
+	show_date_type INT,
+	name varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint,
+	hour_str varchar(500),
+	show_date_type int,
+	week_str varchar(500),
+	isChannel tinyint,
+	channel_list varchar(65355),
+	weight_lock tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user_(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user_copy(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user_cp(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user_cp_copy(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_user_en(
+	msg_tpl_id INT,
+	userid int,
+	hour_start tinyint,
+	hour_end tinyint,
+	status tinyint,
+	weight int,
+	weight_lock_tm int,
+	type tinyint,
+	client_type tinyint,
+	hour_str varchar(500),
+	show_date_type int,
+	week_str varchar(500),
+	isChannel tinyint,
+	channel_list varchar(65355),
+	weight_lock tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_msg_tpl_wy(
+	msg_id INT,
+	to_gender tinyint,
+	msg varchar(500),
+	rel_id tinyint,
+	msg_reply varchar(65355),
+	ver int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	hour_start int,
+	hour_end int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_mumu_user(
+	uid INT,
+	username varchar(500),
+	password varchar(500),
+	gender tinyint,
+	reg_time int,
+	reg_ip varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_myapp_keyword(
+	id INT,
+	name varchar(500),
+	money double,
+	update_time timestamp,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_novel(
+	uid INT,
+	user_id int,
+	user_name varchar(500),
+	balance double
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_novel_charge_log(
+	auto_id INT,
+	uid int,
+	order_no varchar(500),
+	order_subject varchar(500),
+	trade_no varchar(500),
+	order_body varchar(65355),
+	productid int,
+	money double,
+	money_real double,
+	credit int,
+	platform int,
+	user_client_type tinyint,
+	error_code varchar(500),
+	robotid int,
+	tplid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_novel_wechat_user(
+	uid INT,
+	openid varchar(500),
+	reg_ip varchar(500),
+	c_uid int,
+	c_sid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_phone_info(
+	auto_id INT,
+	brand varchar(500),
+	model varchar(500),
+	osbuild varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_position(
+	auto_id INT,
+	title varchar(500),
+	pid int,
+	level tinyint,
+	status tinyint,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_precious(
+	auto_id INT,
+	name varchar(500),
+	coin int,
+	market_price float,
+	thumb varchar(500),
+	description varchar(500),
+	num int,
+	usenum int,
+	proportion float,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	content varchar(65355),
+	unit varchar(500),
+	sort int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_precious_day(
+	id INT,
+	uid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_prize(
+	auto_id INT,
+	name varchar(500),
+	type int,
+	thumb varchar(500),
+	market_price float,
+	description varchar(500),
+	num int,
+	zhuli int,
+	top_hour tinyint,
+	sort int,
+	flag tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_prize_log(
+	auto_id INT,
+	prizeid int,
+	uid int,
+	top_hour tinyint,
+	prize_date date,
+	create_time timestamp,
+	phone bigint,
+	status tinyint,
+	express_company varchar(500),
+	express_id varchar(500),
+	express_no varchar(500),
+	express_status tinyint,
+	get_time timestamp,
+	del_time timestamp,
+	win_time timestamp,
+	imei varchar(500),
+	imsi varchar(500),
+	ip varchar(500),
+	mac varchar(500),
+	hash_0 bigint,
+	hash_1 bigint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_prize_new(
+	auto_id INT,
+	name varchar(500),
+	recommended int,
+	thumb varchar(500),
+	pic varchar(500),
+	market_price float,
+	description varchar(65355),
+	num int,
+	zhuli int,
+	top_hour tinyint,
+	sort int,
+	flag tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_prize_new_log(
+	auto_id INT,
+	prizeid int,
+	uid int,
+	top_hour tinyint,
+	prize_date date,
+	create_time timestamp,
+	phone bigint,
+	status tinyint,
+	express_company varchar(500),
+	express_id varchar(500),
+	express_no varchar(500),
+	express_status tinyint,
+	get_time timestamp,
+	del_time timestamp,
+	win_time timestamp,
+	imei varchar(500),
+	imsi varchar(500),
+	ip varchar(500),
+	mac varcahr,
+	hash_0 bigint,
+	hash_1 bigint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_province(
+	id INT,
+	provinceID varchar(500),
+	province varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_push_ad(
+	auto_id INT,
+	title varchar(500),
+	type int,
+	picUrl varchar(500),
+	describe varchar(500),
+	url varchar(500),
+	startHour int,
+	endHour int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_push_ad_config(
+	auto_id INT,
+	msg_time int,
+	screen_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_push_ad_data(
+	auto_id INT,
+	push_ad_id int,
+	c_uid int,
+	c_sid int,
+	clicknum int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_push_user_list(
+	auto_id INT,
+	user_list varchar(65355)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_redbag_moneytree(
+	id INT,
+	uid int,
+	money int,
+	create_time timestamp,
+	type tinyint,
+	status tinyint,
+	fuid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_redbag_ranking(
+	id INT,
+	uid int,
+	money int,
+	create_time timestamp,
+	type tinyint,
+	status tinyint,
+	rank tinyint,
+	num int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_reply_keyword(
+	id INT,
+	name varchar(500),
+	keyword varchar(500),
+	cretetime timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_reply_keyword_tpl(
+	id INT,
+	key_id int,
+	reply_id int,
+	type tinyint,
+	text_msg varchar(500),
+	url varchar(500),
+	time int,
+	size int,
+	title varchar(500),
+	width int,
+	hight int,
+	video_img varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report(
+	report_id INT,
+	report_date date,
+	user_client_type int,
+	c_uid int,
+	c_sid int,
+	reg_count int,
+	reg_1_count int,
+	reg_web int,
+	reg_qq int,
+	reg_weibo int,
+	bind_cell_phone int,
+	online_time int,
+	active_count int,
+	say_hi_user_count int,
+	say_hi_count int,
+	replay_user_count int,
+	replay_count int,
+	pay_user_count int,
+	pay_amount int,
+	sec_login int,
+	reach_pay_page_user_count int,
+	today_reg_reach_pay_page_user_count int,
+	hit_pay_button_user_count int,
+	hit_pay_button_alipay_user_count int,
+	hit_pay_button_card_user_count int,
+	hit_pay_button_union_pay_user_count int,
+	hit_pay_button_alipay_wap_user_count int,
+	today_reg_hit_pay_button_user_count int,
+	want_replay_user_count int,
+	today_reg_want_replay_user_count int,
+	view_kf_replay_user_count int,
+	today_reg_view_kf_replay_user_count int,
+	click_online_kf_button_user_count int,
+	today_reg_user_active_user int,
+	today_reg_user_say_hi_user_count int,
+	today_reg_user_say_hi_count int,
+	replay_first_user_count int,
+	today_reg_replay_first_user_count int,
+	enter_index_page_user_count int,
+	today_reg_enter_index_page_user_count int,
+	pay_success_alipay_user_count int,
+	pay_success_union_pay_user_count int,
+	pay_success_card_pay_user_count int,
+	pay_success_alipay_wap_user_count int,
+	today_reg_pay_success_alipay_user_count int,
+	today_reg_pay_success_union_pay_user_count int,
+	today_reg_pay_success_card_pay_user_count int,
+	today_reg_pay_success_alipay_wap_user_count int,
+	pay_alipay_amount double,
+	pay_union_pay_amount double,
+	pay_card_pay_amount double,
+	pay_alipay_wap_amount double,
+	service_ping int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	today_reg_pay_alipay_amount double,
+	today_reg_pay_union_pay_amount double,
+	today_reg_pay_card_pay_amount double,
+	today_reg_pay_alipay_wap_amount double
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_activity(
+	report_id INT,
+	k1 int,
+	k2 int,
+	k3 int,
+	k4 int,
+	k5 int,
+	k6 int,
+	k7 int,
+	k8 int,
+	k9 int,
+	k10 int,
+	k11 int,
+	k12 int,
+	k13 int,
+	k14 int,
+	k15 int,
+	k16 int,
+	k17 int,
+	k18 int,
+	k19 int,
+	k20 int,
+	crete_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	uid int,
+	c_uid int,
+	c_sid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_amount(
+	auto_id INT,
+	app_id int,
+	uplay float,
+	weiying float,
+	sp float,
+	sp_s float,
+	soft float,
+	desk float,
+	push_1 float,
+	push_2 float,
+	push_3 float,
+	push_4 float,
+	other_1 float,
+	other_2 float,
+	other_3 float,
+	amount float,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_app_user_action(
+	auto_id INT,
+	uid int,
+	report_date date,
+	enter_reg_page int,
+	active_install int,
+	active_notify int,
+	active_desktop int,
+	active_net_wifi int,
+	active_net_3g int,
+	active_net_2g int,
+	create_time timestamp,
+	update_time timestamp,
+	status int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_app_ver(
+	auto_uid INT,
+	report_date date,
+	c_uid int,
+	c_sid int,
+	v int,
+	ver varchar(500),
+	k1 int,
+	kk1 int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	hash varchar(500),
+	hash_0 bigint,
+	hash_1 bigint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_girl(
+	report_id INT,
+	report_date date,
+	c_uid int,
+	c_sid int,
+	uct int,
+	k1 int,
+	k2 int,
+	k3 int,
+	k4 int,
+	k5 int,
+	k6 int,
+	k7 int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_msg_10_user(
+	auto_id INT,
+	uid int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table www_report_shangxian_user(
+    auto_id int,
+    uid int,
+    report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_user_abnormal(
+	id INT,
+	report_date int,
+	uid int,
+	sayhello_total int,
+	msg_total int,
+	msg_gay int,
+	msg_heterd int,
+	sayhello_gay int,
+	sayhello_heterd int,
+	online int,
+	register_ip int,
+	login_ip int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_user_action(
+	auto_id INT,
+	uid int,
+	report_date date,
+	reach_pay_page_time timestamp,
+	hit_pay_button_time timestamp,
+	hit_pay_button_alipay_time timestamp,
+	hit_pay_button_alipay_wap_time timestamp,
+	hit_pay_button_card_time timestamp,
+	hit_pay_button_union_pay_time timestamp,
+	hit_pay_button__time timestamp,
+	want_replay_time timestamp,
+	view_kf_replay_time timestamp,
+	click_online_kf_button_time timestamp,
+	replay_first_time timestamp,
+	enter_index_page_time timestamp,
+	create_time timestamp,
+	update_time timestamp,
+	status int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_user_free(
+	id INT,
+	uid int,
+	sayhello_total int,
+	message_total int,
+	client_ip bigint,
+	gay_total int,
+	opposite_sex_total int,
+	client_type tinyint,
+	create_time int,
+	status tinyint,
+	update_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_report_ver(
+	auto_id INT,
+	report_date date,
+	hash varchar(500),
+	hash_0 bigint,
+	hash_1 bigint,
+	c_uid int,
+	c_sid int,
+	ver int,
+	type int,
+	uid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_resume(
+	auto_id INT,
+	t_id int,
+	u_name varchar(500),
+	u_gender int,
+	u_birthday date,
+	u_edu int,
+	u_school varchar(500),
+	work_year int,
+	u_industry varchar(500),
+	u_professional varchar(500),
+	u_srouce int,
+	u_tel varchar(500),
+	u_qq varchar(500),
+	work_experience varchar(65355),
+	status tinyint,
+	u_zhuanye varchar(500),
+	u_evaluation varchar(500),
+	update_time timestamp,
+	create_time timestamp,
+	u_email varchar(500),
+	province varchar(500),
+	city varchar(500),
+	u_good_at_skills varchar(500),
+	u_marry_status tinyint,
+	u_native_place varchar(500),
+	u_rs_evaluation varchar(65355),
+	u_bm_evaluation varchar(65355),
+	u_home_address varchar(500),
+	u_post_match tinyint,
+	u_interview_time date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_robots_tpl_charge_log(
+	auto_id INT,
+	order_no varchar(500),
+	tpl_type int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_root_data(
+	auto_id INT,
+	c_uid int,
+	c_sid int,
+	num int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_rose(
+	uid INT,
+	hn_pwd varchar(500),
+	weixin varchar(500),
+	qq bigint,
+	rose_qr varchar(500),
+	rose_avatar varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sdk_active_data(
+	auto_id INT,
+	sdk_id int,
+	c_uid int,
+	c_sid int,
+	activenum int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sdk_hejupay(
+	auto_id INT,
+	tradeId varchar(500),
+	point varchar(500),
+	amount varchar(500),
+	extraInfo varchar(500),
+	c_uid int,
+	c_sid int,
+	class varchar(500),
+	Imsi varchar(500),
+	Province varchar(500),
+	ts varchar(500),
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sessions(
+	session_id INT,
+	uid int,
+	hash varchar(500),
+	online_time int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_setting(
+	k varchar(500),
+	v varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_share(
+	share_id INT,
+	share_time timestamp,
+	type tinyint,
+	uid int,
+	share_expire_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table www_single_wechat_qrcode(
+    auto_id int,
+    name varchar(50),
+    qrcodeUrl varchar(300)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sms(
+	sms_id INT,
+	type int,
+	hash varchar(500),
+	phone_num varchar(255),
+	verify_code varchar(500),
+	content varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sms_verify(
+	auto_id INT,
+	phone_num bigint,
+	sign varchar(500),
+	verify_code int,
+	create_time int,
+	end_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_channel(
+	auto_id INT,
+	name varchar(500),
+	qq varchar(500),
+	type tinyint,
+	simoperator tinyint,
+	fun tinyint,
+	money float,
+	url varchar(500),
+	sms_type tinyint,
+	sms_no varchar(500),
+	sms_content varchar(500),
+	sms_url varchar(500),
+	start_hour tinyint,
+	end_hour tinyint,
+	day_num tinyint,
+	month_num int,
+	xx_num varchar(500),
+	xx_key varchar(500),
+	xx_reply varchar(500),
+	xx_reply_key varchar(500),
+	xx_reply_no varchar(500),
+	sms_no_second varchar(500),
+	sms_content_second varchar(500),
+	second_time int,
+	status tinyint,
+	orderNum int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_channel_config(
+	auto_id INT,
+	sp_id int,
+	type tinyint,
+	province varchar(500),
+	no_city varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_click_data(
+	auto_id INT,
+	c_uid int,
+	c_sid int,
+	clicknum int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_click_log(
+	auto_id INT,
+	sp_id int,
+	uid int,
+	imsi varchar(500),
+	simoperator tinyint,
+	phone varchar(500),
+	money float,
+	c_uid int,
+	c_sid int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_click_log_new(
+	auto_id INT,
+	sp_id int,
+	uid int,
+	imsi varchar(500),
+	simoperator tinyint,
+	phone varchar(500),
+	money float,
+	c_uid int,
+	c_sid int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_click_sdk_log(
+	auto_id INT,
+	sdk_id int,
+	uid int,
+	imsi varchar(500),
+	simoperator tinyint,
+	money float,
+	time int,
+	c_uid int,
+	c_sid int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman(
+	auto_id INT,
+	phone varchar(500),
+	contentcodes varchar(500),
+	appcode varchar(500),
+	transactionid varchar(500),
+	state varchar(500),
+	provincename varchar(500),
+	cityname varchar(500),
+	billingpoint float,
+	failurereason varchar(500),
+	exdata int,
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman_all_log(
+	auto_id INT,
+	uid int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman_dx(
+	auto_id INT,
+	code varchar(500),
+	orderId varchar(500),
+	amount int,
+	price float,
+	status varchar(500),
+	imsi varchar(500),
+	exData int,
+	mobile varchar(500),
+	supplier int,
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman_dx_new(
+	auto_id INT,
+	orderId varchar(500),
+	msg varchar(500),
+	port varchar(500),
+	date varchar(500),
+	status varchar(500),
+	price varchar(500),
+	mobile varchar(500),
+	province varchar(500),
+	city varchar(500),
+	exdate varchar(500),
+	desc varchar(500),
+	supplier int,
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman_imsi(
+	auto_id INT,
+	imsi varchar(500),
+	type tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_dongman_log(
+	auto_id INT,
+	uid int,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_get_data(
+	auto_id INT,
+	sp_id int,
+	get_success int,
+	get_error int,
+	send_data int,
+	send_success_data int,
+	date_hour int,
+	date_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_heju(
+	auto_id INT,
+	tradeId varchar(500),
+	point varchar(500),
+	amount varchar(500),
+	extralnfo int,
+	ts int,
+	class tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_receive(
+	auto_id INT,
+	cid int,
+	linkid varchar(500),
+	spnnumber varchar(500),
+	msg varchar(500),
+	mobile varchar(500),
+	price float,
+	status varchar(500),
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_receive_ido(
+	auto_id INT,
+	cid int,
+	userid varchar(500),
+	webid varchar(500),
+	product varchar(500),
+	cpid varchar(500),
+	nowtime varchar(64),
+	flag varchar(64),
+	area varchar(500),
+	verstr varchar(500),
+	other varchar(500),
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_send_data(
+	auto_id INT,
+	c_uid int,
+	c_sid int,
+	clicknum int,
+	clickuser int,
+	report_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_test_data(
+	auto_id INT,
+	sp_id int,
+	imsi varchar(500),
+	no varchar(20),
+	msg varchar(500),
+	add_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_upay360(
+	auto_id INT,
+	trade_id varchar(500),
+	app_key varchar(500),
+	goods_key varchar(500),
+	sn varchar(500),
+	uid varchar(500),
+	op varchar(64),
+	area varchar(64),
+	amount varchar(64),
+	extra varchar(64),
+	ts varchar(64),
+	result varchar(64),
+	time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_user_info(
+	uid INT,
+	simoperator int,
+	simoperatorNum int,
+	region varchar(500),
+	region_id int,
+	city varchar(500),
+	city_id int,
+	gender tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_view_log(
+	auto_id INT,
+	sp_id int,
+	uid int,
+	imsi varchar(20),
+	simoperator tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sp_view_region_log(
+	auto_id INT,
+	region varchar(500),
+	imsi varchar(500),
+	simoperator tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sys_notice(
+	id INT,
+	uid int,
+	type tinyint,
+	title varchar(500),
+	content varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_sys_session(
+	session_id varchar(255),
+	session_expire int,
+	session_date bigint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_talent(
+	auto_id INT,
+	u_name varchar(50),
+	u_gender int,
+	u_age int,
+	u_edu int,
+	u_school varchar(20),
+	work_year int,
+	u_industry varchar(500),
+	u_professional varchar(500),
+	u_level int,
+	gt_user varchar(500),
+	u_srouce varchar(500),
+	u_tel varchar(500),
+	u_qq varchar(20),
+	work_experience varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	gt_time timestamp,
+	is_gt int,
+	is_rz int,
+	status tinyint,
+	u_zhuanye varchar(500),
+	u_evaluation varchar(500),
+	u_word_url varchar(500),
+	u_birthday date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_talent_new(
+	auto_id INT,
+	talent_num varchar(500),
+	position_id int,
+	u_name varchar(50),
+	gt_user varchar(10),
+	gt_status varchar(65355),
+	gt_time timestamp,
+	is_gt int,
+	job_search_intention varchar(65355),
+	remarks varchar(65355),
+	u_word_url varchar(255),
+	status int,
+	update_time timestamp,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_test_info(
+	auto_id INT,
+	title varchar(500),
+	stitle varchar(500),
+	desp varchar(500),
+	imgUrl varchar(500),
+	num int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_test_info_data(
+	auto_id INT,
+	test_id int,
+	name varchar(500),
+	desp varchar(500),
+	imgUrl varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_domain(
+	id INT,
+	url varchar(255),
+	create_time timestamp,
+	update_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_peizhi(
+	id INT,
+	c_uid varchar(500),
+	imgurl varchar(500),
+	add_date timestamp,
+	update_time timestamp,
+	goto_doamin varchar(500),
+	status tinyint,
+	bgimg_md5 varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_user(
+	id INT,
+	c_sid int,
+	sex tinyint,
+	username varchar(500),
+	province varchar(500),
+	city varchar(500),
+	age int,
+	openid varchar(500),
+	status tinyint,
+	create_date timestamp,
+	img_md5 varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_user_acount(
+	user_id INT,
+	user_money double
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_user_income(
+	id INT,
+	user_id int,
+	tg_money double,
+	money_total double,
+	report_date date,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tg_user_withdraw(
+	id INT,
+	user_id int,
+	money double,
+	pay_type tinyint,
+	alipay_account varchar(500),
+	accountname varchar(500),
+	accountnum varchar(500),
+	bank varchar(500),
+	name varchar(500),
+	mobile varchar(500),
+	create_time timestamp,
+	handing_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_tree_url(
+	id INT,
+	url varchar(500),
+	type int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_ad(
+	auto_id INT,
+	ad_type tinyint,
+	title varchar(500),
+	imgUrl varchar(500),
+	link varchar(500),
+	day_num int,
+	pkg_name varchar(500),
+	weight float,
+	price float,
+	flag tinyint,
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_ad_config(
+	auto_id INT,
+	tg_type tinyint,
+	channel_list varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_ad_report(
+	auto_id INT,
+	report_date date,
+	tg_type int,
+	ad_id int,
+	ver bigint,
+	c_uid int,
+	c_sid int,
+	install_num int,
+	click_num int,
+	ip_num int,
+	cast_num float
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_ad_report_all(
+	auto_id INT,
+	report_date date,
+	tg_type int,
+	ad_id int,
+	install_num int,
+	click_num int,
+	ip_num int,
+	cast_num float,
+	income_num float
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_check_uid(
+	id INT,
+	uid varchar(500),
+	num int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_desk(
+	auto_id INT,
+	title varchar(500),
+	icon varchar(500),
+	link varchar(500),
+	channel_list varchar(65355),
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_notice(
+	id INT,
+	type tinyint,
+	title varchar(500),
+	content varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_report(
+	auto_id INT,
+	uid int,
+	sid int,
+	regum int,
+	num int,
+	price float,
+	summary float,
+	add_time date,
+	status int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_report_tmp(
+	auto_id INT,
+	uid int,
+	sid int,
+	regnum int,
+	num int,
+	day_money float,
+	old_money float,
+	summoney float,
+	add_time date,
+	status int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_settlement(
+	auto_id INT,
+	uid int,
+	sid int,
+	income float,
+	tax float,
+	poundage float,
+	realincome float,
+	paymoney float,
+	settlementtime timestamp,
+	paytime timestamp,
+	payinfo varchar(255),
+	paystatus varchar(500),
+	starttime date,
+	endtime date,
+	settlementstatus tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_uid_manage(
+	id INT,
+	uid int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_user(
+	uid INT,
+	username varchar(500),
+	userpwd varchar(500),
+	ctype int,
+	mode int,
+	mediadesp varchar(500),
+	price float,
+	paymode int,
+	deduction float,
+	tg_url varchar(65355),
+	tg_type int,
+	contact varchar(500),
+	QQ varchar(500),
+	phone varchar(500),
+	bd varchar(500),
+	bd_qq varchar(500),
+	bd_id int,
+	paytype int,
+	payee varchar(500),
+	idcard varchar(20),
+	bankno varchar(500),
+	bankname varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	sourceid int,
+	remostatusve_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_user_table(
+	uid INT,
+	username varchar(255),
+	userpwd varchar(500),
+	userpwd_m varchar(255),
+	mode tinyint,
+	sid_list varchar(500),
+	contact varchar(500),
+	QQ varchar(500),
+	phone varchar(500),
+	bd varchar(500),
+	bd_qq varchar(500),
+	bd_id int,
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_union_user_xx(
+	auto_id INT,
+	uid int,
+	sid int,
+	username varchar(500),
+	userpwd varchar(500),
+	mediadesp varchar(500),
+	deduction float,
+	mode tinyint,
+	tg_url varchar(65355),
+	packaging tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	qrcode varchar(500),
+	qrcode_url varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user(
+	auto_id INT,
+	from_uid int,
+	to_uid int,
+	msg varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_address(
+	uid INT,
+	phone bigint,
+	province int,
+	city int,
+	address varchar(500),
+	username varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_auth(
+	id INT,
+	uid int,
+	authid varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_avatar_verify(
+	auto_id bigint,
+	url varchar(500),
+	uid int,
+	sex_result tinyint,
+	sex_rate float,
+	sex_review tinyint,
+	ad_result tinyint,
+	ad_rate float,
+	ad_review tinyint,
+	face_result tinyint,
+	face_rate float,
+	face_review tinyint,
+	beauti_result tinyint,
+	beauti_rate float,
+	beauti_review tinyint,
+	review_status tinyint,
+	tm int,
+	review_result tinyint,
+	review_tm int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_avatar_verify_status(
+	uid INT,
+	verify_id bigint,
+	verify_status tinyint,
+	rstatus tinyint,
+	tm int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_bribery(
+	auto_id INT,
+	uid int,
+	from_uid int,
+	charge_time timestamp,
+	charge_money float,
+	product_id int,
+	base_bribery float,
+	rand_bribery float,
+	add_hour int,
+	add_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_bribery_receive(
+	auto_id INT,
+	uid int,
+	receive_money float,
+	receive_time timestamp,
+	op_time timestamp,
+	bribery_ids varchar(500),
+	memo varchar(500),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_broadcast(
+	auto_id INT,
+	uid int,
+	b_context varchar(500),
+	vreatetime timstamp,
+	updatetime timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_complain(
+	id INT,
+	from_uid int,
+	to_uid int,
+	content varchar(65355),
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_credit(
+	id INT,
+	uid int,
+	credit int,
+	bag int,
+	group tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_detail(
+	uid INT,
+	nickname varchar(500),
+	avatar varchar(500),
+	avatar_big varchar(500),
+	avatarstatus tinyint,
+	avatar_refuse_reason int,
+	gender int,
+	province int,
+	city int,
+	birthday date,
+	age int,
+	height int,
+	weight int,
+	star int,
+	blood int,
+	character varhcar(22),
+	superiority varchar(500),
+	interest varchar(22),
+	drinking tinyint,
+	smoke tinyint,
+	edu int,
+	job int,
+	income int,
+	house int,
+	marry int,
+	datingfor varchar(500),
+	concept varchar(500),
+	favplace varchar(500),
+	aboutme varchar(65355),
+	sayhello varchar(500),
+	qq varchar(500),
+	qq_auth tinyint,
+	tel varchar(14),
+	mobile varchar(500),
+	mobile_auth tinyint,
+	mobile_validation tinyint,
+	email varchar(30),
+	email_validation tinyint,
+	wechat varchar(500),
+	wechat_validation tinyint,
+	realname varchar(500),
+	Idcard varchar(500),
+	Idcard_validation tinyint,
+	status int,
+	complete int,
+	hits int,
+	looknums int,
+	updatetime int,
+	x double,
+	y double,
+	photoNum int,
+	photoNum1 int,
+	real_sex tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	wechat_auth int,
+	hot int,
+	ver int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_follow(
+	auto_id INT,
+	from_uid int,
+	to_uid int,
+	follow_time timestamp,
+	follow_ip varchar(500),
+	type tinyint,
+	view_time timestamp,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_gamekf_os(
+	uid INT,
+	wechat_os tinyint,
+	game_kf_id int,
+	tm timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_group(
+	groupid tinyint,
+	name varchar(22),
+	allowsendmessage tinyint,
+	allowvisit tinyint,
+	allowmessagetop tinyint,
+	allowindexshow tinyint,
+	allowsearchshow tinyint,
+	allowbroadcast tinyint,
+	allowviewnums int,
+	price_y double,
+	price_3m double,
+	price_1m double,
+	description int,
+	listorder tinyint,
+	disabled tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_heart(
+	uid INT,
+	imgUrl varchar(255),
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_help_list(
+	auto_id INT,
+	uid int,
+	gender tinyint,
+	province int,
+	promise varchar(500),
+	pub_time int,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_help_new_list(
+	auto_id INT,
+	uid int,
+	prizeid int,
+	pub_time int,
+	pub_date int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_ip_ban(
+	ip varchar(500),
+	tm timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_kuplay(
+	uid INT,
+	kuplay_id int,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_lang(
+	uid INT,
+	lang tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_login_log(
+	auto_id INT,
+	uid int,
+	login_type tinyint,
+	login_time timestamp,
+	login_ip varchar(500),
+	login_result tinyint,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_men_avatar(
+	uid INT,
+	scanstat tinyint,
+	tm int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_message(
+	auto_id INT,
+	from_id int,
+	to_id varchar(11),
+	m_title varchar(300),
+	m_content varchar(65355),
+	type tinyint,
+	msg_id int,
+	`from` varchar(255),
+	view_time timestamp,
+	msg_ver int,
+	create_time timestamp,
+	status tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_message_count(
+	auto_id INT,
+	from_uid int,
+	to_uid int,
+	unreadnums int,
+	readnums int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_message_fail(
+	auto_id INT,
+	uid int,
+	content varchar(65355),
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_message_failed(
+	auto_id INT,
+	from_uid int,
+	to_uid int,
+	msg varchar(65355),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_message_female(
+	auto_id INT,
+	from_id int,
+	to_id int,
+	m_content varchar(65355),
+	type tinyint,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_msg_support(
+	uid INT,
+	support int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_nickname(
+	auto_id INT,
+	nickname varchar(500),
+	gender tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_nickname_modify(
+	int INT,
+	nickname varchar(22),
+	r_nickname varchar(500),
+	status tinyint,
+	refuse_reason varchar(500),
+	add_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_online(
+	uid INT,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_online_client(
+	uid INT,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_online_wechat(
+	uid INT,
+	time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_orders(
+	auto_id INT,
+	uid int,
+	o_id varchar(500),
+	g_id int,
+	g_title varchar(500),
+	g_price double,
+	paynum tinyint,
+	contact varchar(500),
+	phone varchar(500),
+	address varchar(500),
+	courier_company varchar(500),
+	courier_num varchar(500),
+	order_note varchar(500),
+	status tinyint,
+	create_time timestamp,
+	fh_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_os(
+	uid INT,
+	os tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_photo_album(
+	albumid bigint,
+	albumname varchar(500),
+	uid bigint,
+	pic varchar(500),
+	picdesc varchar(65355),
+	viewtimes bigint,
+	addtime bigint,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_photo_album_verify(
+	albumid INT,
+	sex_result tinyint,
+	sex_rate float,
+	sex_review tinyint,
+	tm int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_pkgname(
+	uid INT,
+	pkgname varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_precious_log(
+	auto_id INT,
+	uid int,
+	pid int,
+	ip varchar(500),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	type tinyint,
+	gender tinyint,
+	deliver_date varchar(500),
+	deliver_no varchar(500),
+	deliver_com varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_require(
+	uid INT,
+	rq_marry int,
+	rq_age_min int,
+	rq_age_max int,
+	rq_province int,
+	rq_city int,
+	rq_edu int,
+	rq_income int,
+	rq_height_min int,
+	rq_height_max int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_rose(
+	id INT,
+	uid int,
+	roseid int,
+	bind_time int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_sayHi(
+	uid INT,
+	sayHi varchar(50),
+	status tinyint,
+	refuse_reason varchar(255),
+	add_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_sayHi_config(
+	auto_id INT,
+	sayHi varchar(500),
+	gender tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_smspush_list(
+	uid INT,
+	phone varchar(500),
+	regtime int,
+	falg tinyint,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_test(
+	uid INT,
+	falg int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_test_20170606(
+	uid INT,
+	falg int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_three(
+	uid INT,
+	wxid varchar(500),
+	qqid varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_validation(
+	uid INT,
+	id_num varchar(500),
+	id_front_img varchar(500),
+	id_back_img varchar(500),
+	face_img varchar(255),
+	paytype tinyint,
+	status tinyint,
+	create_time timestamp,
+	reason varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_video(
+	int INT,
+	name varchar(50),
+	uid int,
+	video varchar(500),
+	pic varchar(500),
+	duration int,
+	viewtimes int,
+	desc varchar(500),
+	cost int,
+	giftid int,
+	giftnum int,
+	create_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_visitors(
+	auto_id INT,
+	visit_uid int,
+	uid int,
+	visit_time timestamp,
+	visit_ip varchar(500),
+	view_time timestamp,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint,
+	visit_avatarstatus tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_wechat(
+	uid INT,
+	openid varchar(500),
+	country varchar(500),
+	province varchar(500),
+	city varchar(500),
+	isSubscribe tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_wechat_list(
+	id INT,
+	openid varchar(500),
+	tm int,
+	wap int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_wechat_os(
+	uid int,
+	wechat_os tinyint,
+	game_kf_id int,
+	tm timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_wechat_scan(
+	id INT,
+	openid varchar(500),
+	sid int,
+	tm int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_wish(
+	wid INT,
+	uid int,
+	credit int,
+	url varchar(500),
+	name varchar(500),
+	price double,
+	checked tinyint,
+	reason tinyint,
+	close tinyint,
+	complete tinyint,
+	website tinyint,
+	o_id varchar(500),
+	g_id int,
+	contact varchar(10),
+	phone varchar(500),
+	address varchar(500),
+	courier_company varchar(500),
+	courier_num varchar(500),
+	status tinyint,
+	create_time timestamp,
+	complete_time timestamp,
+	update_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_yan_tmp(
+	id INT,
+	uid int,
+	avatar varchar(500),
+	BeautiResult int,
+	BeautiRate float,
+	BeautiReview int,
+	tm int,
+	FaceResult int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_user_ycoin_log(
+	auto_id INT,
+	uid int,
+	type int,
+	coin int,
+	ip varchar(50),
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_video(
+	auto_id INT,
+	type tinyint,
+	title varchar(500),
+	stitle varchar(500),
+	bigpic varchar(500),
+	pic varchar(500),
+	url varchar(500),
+	flag tinyint,
+	isbig tinyint,
+	time varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_video_formal(
+	auto_id INT,
+	type tinyint,
+	title varchar(500),
+	stitle varchar(500),
+	bigpic varchar(500),
+	pic varchar(500),
+	url varchar(500),
+	flag tinyint,
+	isbig tinyint,
+	time varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_video_push(
+	auto_id INT,
+	type tinyint,
+	title varchar(500),
+	stitle varchar(500),
+	bigpic varchar(500),
+	pic varchar(500),
+	url varchar(500),
+	flag tinyint,
+	isbig tinyint,
+	time varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_vote(
+	id INT,
+	name varchar(500),
+	softname varchar(500),
+	time int,
+	vote_num int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wechat_count(
+	auto_id INT,
+	report_date int,
+	sayHiAll int,
+	sendMsg int,
+	payClick int
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_weixin(
+	id INT,
+	weixin_id varchar(500),
+	weixin_qrcode_url varchar(500),
+	status tinyint,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_weixin_report(
+	id INT,
+	wid int,
+	send_num int,
+	report_date date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wish_address(
+	auto_id INT,
+	uid int,
+	contact varchar(500),
+	phone varchar(500),
+	address varchar(500),
+	is_default tinyint,
+	status tinyint,
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wish_charge_log(
+	auto_id INT,
+	uid int,
+	order_no varchar(255),
+	order_subject varchar(500),
+	trade_no varchar(500),
+	order_body varchar(65355),
+	productid int,
+	money double,
+	credit int,
+	platform tinyint,
+	user_client_type tinyint,
+	error_code varchar(500),
+	to_id int,
+	tplid int,
+	create_time timestamp,
+	update_time timestamp,
+	remove_time timestamp,
+	status tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wish_credit(
+	id INT,
+	from_uid int,
+	to_uid int,
+	credit int,
+	create_time timestamp,
+	type tinyint,
+	status tinyint,
+	credit_ip varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_word_filter(
+	keyword varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_word_filter_gift(
+	keyword varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_word_filter_msg(
+	keyword varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wy_active_imei(
+	auto_id INT,
+	imei varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wy_active_imei_enter(
+	auto_id INT,
+	imei varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wy_active_imei_sp(
+	auto_id INT,
+	imei varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wy_active_list(
+	auto_id INT,
+	c_uid int,
+	c_sid int,
+	imei varchar(500),
+	create_time timestamp
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_wy_active_report(
+	auto_id INT,
+	c_uid int,
+	c_sid int,
+	active_num int,
+	click_num int,
+	click_nocard_num int,
+	click_real_num int,
+	reg_num int,
+	charge_num int,
+	charge_money float,
+	report_date date,
+	type tinyint
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;
+create table IF NOT EXISTS www_yht_settlement_list(
+	id INT,
+	order_no varchar(500),
+	total_fee float,
+	srcReqSN varchar(500),
+	responeSN varchar(500),
+	payAmount float,
+	status int,
+	create_time timestamp,
+	callback_time timestamp,
+	msg varchar(500),
+	merchant varchar(500)
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\1'
+STORED AS ORC;

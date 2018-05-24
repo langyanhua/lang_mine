@@ -1,0 +1,141 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "report_date",
+              "reach_pay_page_time",
+              "hit_pay_button_time",
+              "hit_pay_button_alipay_time",
+              "hit_pay_button_alipay_wap_time",
+              "hit_pay_button_card_time",
+              "hit_pay_button_union_pay_time",
+              "hit_pay_button__time",
+              "want_replay_time",
+              "view_kf_replay_time",
+              "click_online_kf_button_time",
+              "replay_first_time",
+              "enter_index_page_time",
+              "create_time",
+              "update_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "report_user_action"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_user_action",
+            "fileName": "report_user_action",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "reach_pay_page_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button_alipay_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button_alipay_wap_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button_card_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button_union_pay_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "hit_pay_button__time",
+                "type": "timestamp"
+              },
+              {
+                "name": "want_replay_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "view_kf_replay_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "click_online_kf_button_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "replay_first_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "enter_index_page_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

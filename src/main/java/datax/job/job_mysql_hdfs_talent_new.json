@@ -1,0 +1,121 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "talent_num",
+              "position_id",
+              "u_name",
+              "gt_user",
+              "gt_status",
+              "gt_time",
+              "is_gt",
+              "job_search_intention",
+              "remarks",
+              "u_word_url",
+              "status",
+              "update_time",
+              "create_time"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "talent_new"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_talent_new",
+            "fileName": "talent_new",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "talent_num",
+                "type": "varchar"
+              },
+              {
+                "name": "position_id",
+                "type": "int"
+              },
+              {
+                "name": "u_name",
+                "type": "varchar"
+              },
+              {
+                "name": "gt_user",
+                "type": "varchar"
+              },
+              {
+                "name": "gt_status",
+                "type": "varchar"
+              },
+              {
+                "name": "gt_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_gt",
+                "type": "int"
+              },
+              {
+                "name": "job_search_intention",
+                "type": "varchar"
+              },
+              {
+                "name": "remarks",
+                "type": "varchar"
+              },
+              {
+                "name": "u_word_url",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "int"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

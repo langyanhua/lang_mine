@@ -1,0 +1,141 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "msg_tpl_id",
+              "ver",
+              "type",
+              "text_msg",
+              "voice_url",
+              "voice_time",
+              "voice_title",
+              "video_url",
+              "video_img",
+              "video_time",
+              "video_size",
+              "video_width",
+              "video_height",
+              "video_title",
+              "img_url",
+              "img_title",
+              "create_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "msg_tpl_new"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_msg_tpl_new",
+            "fileName": "msg_tpl_new",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "msg_tpl_id",
+                "type": "int"
+              },
+              {
+                "name": "ver",
+                "type": "int"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "text_msg",
+                "type": "varchar"
+              },
+              {
+                "name": "voice_url",
+                "type": "varchar"
+              },
+              {
+                "name": "voice_time",
+                "type": "int"
+              },
+              {
+                "name": "voice_title",
+                "type": "varchar"
+              },
+              {
+                "name": "video_url",
+                "type": "varchar"
+              },
+              {
+                "name": "video_img",
+                "type": "varchar"
+              },
+              {
+                "name": "video_time",
+                "type": "int"
+              },
+              {
+                "name": "video_size",
+                "type": "int"
+              },
+              {
+                "name": "video_width",
+                "type": "int"
+              },
+              {
+                "name": "video_height",
+                "type": "int"
+              },
+              {
+                "name": "video_title",
+                "type": "varchar"
+              },
+              {
+                "name": "img_url",
+                "type": "varchar"
+              },
+              {
+                "name": "img_title",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "order_no",
+              "order_subject",
+              "trade_no",
+              "order_body",
+              "productid",
+              "money",
+              "money_real",
+              "credit",
+              "platform",
+              "user_client_type",
+              "error_code",
+              "robotid",
+              "tplid",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "novel_charge_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_novel_charge_log",
+            "fileName": "novel_charge_log",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "order_no",
+                "type": "varchar"
+              },
+              {
+                "name": "order_subject",
+                "type": "varchar"
+              },
+              {
+                "name": "trade_no",
+                "type": "varchar"
+              },
+              {
+                "name": "order_body",
+                "type": "varchar"
+              },
+              {
+                "name": "productid",
+                "type": "int"
+              },
+              {
+                "name": "money",
+                "type": "double"
+              },
+              {
+                "name": "money_real",
+                "type": "double"
+              },
+              {
+                "name": "credit",
+                "type": "int"
+              },
+              {
+                "name": "platform",
+                "type": "int"
+              },
+              {
+                "name": "user_client_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "error_code",
+                "type": "varchar"
+              },
+              {
+                "name": "robotid",
+                "type": "int"
+              },
+              {
+                "name": "tplid",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

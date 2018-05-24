@@ -1,0 +1,101 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "sid",
+              "regnum",
+              "num",
+              "day_money",
+              "old_money",
+              "summoney",
+              "add_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "union_report_tmp"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_union_report_tmp",
+            "fileName": "union_report_tmp",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "sid",
+                "type": "int"
+              },
+              {
+                "name": "regnum",
+                "type": "int"
+              },
+              {
+                "name": "num",
+                "type": "int"
+              },
+              {
+                "name": "day_money",
+                "type": "float"
+              },
+              {
+                "name": "old_money",
+                "type": "float"
+              },
+              {
+                "name": "summoney",
+                "type": "float"
+              },
+              {
+                "name": "add_time",
+                "type": "date"
+              },
+              {
+                "name": "status",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

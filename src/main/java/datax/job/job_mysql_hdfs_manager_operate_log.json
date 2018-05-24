@@ -1,0 +1,91 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "manager_id",
+              "operate_ip",
+              "operate_time",
+              "module_name",
+              "target_id",
+              "data",
+              "remark"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "manager_operate_log"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_manager_operate_log",
+            "fileName": "manager_operate_log",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "manager_id",
+                "type": "int"
+              },
+              {
+                "name": "operate_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "operate_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "module_name",
+                "type": "varchar"
+              },
+              {
+                "name": "target_id",
+                "type": "int"
+              },
+              {
+                "name": "data",
+                "type": "varchar"
+              },
+              {
+                "name": "remark",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

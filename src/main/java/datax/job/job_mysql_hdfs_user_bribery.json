@@ -1,0 +1,106 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "from_uid",
+              "charge_time",
+              "charge_money",
+              "product_id",
+              "base_bribery",
+              "rand_bribery",
+              "add_hour",
+              "add_time",
+              "status"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "user_bribery"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_bribery",
+            "fileName": "user_bribery",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "from_uid",
+                "type": "int"
+              },
+              {
+                "name": "charge_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "charge_money",
+                "type": "float"
+              },
+              {
+                "name": "product_id",
+                "type": "int"
+              },
+              {
+                "name": "base_bribery",
+                "type": "float"
+              },
+              {
+                "name": "rand_bribery",
+                "type": "float"
+              },
+              {
+                "name": "add_hour",
+                "type": "int"
+              },
+              {
+                "name": "add_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

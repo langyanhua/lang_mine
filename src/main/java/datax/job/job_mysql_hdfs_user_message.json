@@ -1,0 +1,115 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "from_id",
+              "to_id",
+              "m_title",
+              "m_content",
+              "type",
+              "msg_id",
+              "`from`",
+              "view_time",
+              "msg_ver",
+              "create_time",
+              "status",
+              "time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_message"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_message",
+            "fileName": "user_message",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "from_id",
+                "type": "int"
+              },
+              {
+                "name": "to_id",
+                "type": "varchar"
+              },
+              {
+                "name": "m_title",
+                "type": "varchar"
+              },
+              {
+                "name": "m_content",
+                "type": "varchar"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "msg_id",
+                "type": "int"
+              },
+              {
+                "name": "from",
+                "type": "varchar"
+              },{
+                "name": "view_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "msg_ver",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "time",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

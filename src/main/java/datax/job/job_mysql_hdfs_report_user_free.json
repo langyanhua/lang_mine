@@ -1,0 +1,106 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "uid",
+              "sayhello_total",
+              "message_total",
+              "client_ip",
+              "gay_total",
+              "opposite_sex_total",
+              "client_type",
+              "create_time",
+              "status",
+              "update_time"
+            ],
+            "splitPk": "id",
+            "connection": [
+              {
+                "table": [
+                  "report_user_free"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_user_free",
+            "fileName": "report_user_free",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "sayhello_total",
+                "type": "int"
+              },
+              {
+                "name": "message_total",
+                "type": "int"
+              },
+              {
+                "name": "client_ip",
+                "type": "bigint"
+              },
+              {
+                "name": "gay_total",
+                "type": "int"
+              },
+              {
+                "name": "opposite_sex_total",
+                "type": "int"
+              },
+              {
+                "name": "client_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "int"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "update_time",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

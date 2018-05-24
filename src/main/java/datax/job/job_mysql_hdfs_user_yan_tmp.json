@@ -1,0 +1,91 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "uid",
+              "avatar",
+              "BeautiResult",
+              "BeautiRate",
+              "BeautiReview",
+              "tm",
+              "FaceResult"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_yan_tmp"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_yan_tmp",
+            "fileName": "user_yan_tmp",
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "avatar",
+                "type": "varchar"
+              },
+              {
+                "name": "BeautiResult",
+                "type": "int"
+              },
+              {
+                "name": "BeautiRate",
+                "type": "float"
+              },
+              {
+                "name": "BeautiReview",
+                "type": "int"
+              },
+              {
+                "name": "tm",
+                "type": "int"
+              },
+              {
+                "name": "FaceResult",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

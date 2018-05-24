@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "d_money",
+              "d_datetime",
+              "d_reason",
+              "status",
+              "create_time",
+              "is_chuli",
+              "chuli_time"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "deduction_money"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_deduction_money",
+            "fileName": "deduction_money",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "int"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "d_money",
+                "type": "double"
+              },
+              {
+                "name": "d_datetime",
+                "type": "date"
+              },
+              {
+                "name": "d_reason",
+                "type": "varchar"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_chuli",
+                "type": "tinyint"
+              },
+              {
+                "name": "chuli_time",
+                "type": "timestamp"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

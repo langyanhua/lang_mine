@@ -1,0 +1,341 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "nickname",
+              "avatar",
+              "avatar_big",
+              "avatarstatus",
+              "avatar_refuse_reason",
+              "gender",
+              "province",
+              "city",
+              "birthday",
+              "age",
+              "height",
+              "weight",
+              "star",
+              "blood",
+              "`character`",
+              "superiority",
+              "interest",
+              "drinking",
+              "smoke",
+              "edu",
+              "job",
+              "income",
+              "house",
+              "marry",
+              "datingfor",
+              "concept",
+              "favplace",
+              "aboutme",
+              "sayhello",
+              "qq",
+              "qq_auth",
+              "tel",
+              "mobile",
+              "mobile_auth",
+              "mobile_validation",
+              "email",
+              "email_validation",
+              "wechat",
+              "wechat_validation",
+              "realname",
+              "Idcard",
+              "Idcard_validation",
+              "status",
+              "complete",
+              "hits",
+              "looknums",
+              "updatetime",
+              "x",
+              "y",
+              "photoNum",
+              "photoNum1",
+              "real_sex",
+              "create_time",
+              "update_time",
+              "wechat_auth",
+              "hot",
+              "ver"
+            ],
+            "splitPk": "uid",
+            "connection": [
+              {
+                "table": [
+                  "user_detail"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_detail",
+            "fileName": "user_detail",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "nickname",
+                "type": "varchar"
+              },
+              {
+                "name": "avatar",
+                "type": "varchar"
+              },
+              {
+                "name": "avatar_big",
+                "type": "varchar"
+              },
+              {
+                "name": "avatarstatus",
+                "type": "tinyint"
+              },
+              {
+                "name": "avatar_refuse_reason",
+                "type": "int"
+              },
+              {
+                "name": "gender",
+                "type": "int"
+              },
+              {
+                "name": "province",
+                "type": "int"
+              },
+              {
+                "name": "city",
+                "type": "int"
+              },
+              {
+                "name": "birthday",
+                "type": "date"
+              },
+              {
+                "name": "age",
+                "type": "int"
+              },
+              {
+                "name": "height",
+                "type": "int"
+              },
+              {
+                "name": "weight",
+                "type": "int"
+              },
+              {
+                "name": "star",
+                "type": "int"
+              },
+              {
+                "name": "blood",
+                "type": "int"
+              },
+              {
+                "name": "character",
+                "type": "varchar"
+              },
+              {
+                "name": "superiority",
+                "type": "varchar"
+              },
+              {
+                "name": "interest",
+                "type": "varchar"
+              },
+              {
+                "name": "drinking",
+                "type": "tinyint"
+              },
+              {
+                "name": "smoke",
+                "type": "tinyint"
+              },
+              {
+                "name": "edu",
+                "type": "int"
+              },
+              {
+                "name": "job",
+                "type": "int"
+              },
+              {
+                "name": "income",
+                "type": "int"
+              },
+              {
+                "name": "house",
+                "type": "int"
+              },
+              {
+                "name": "marry",
+                "type": "int"
+              },
+              {
+                "name": "datingfor",
+                "type": "varchar"
+              },
+              {
+                "name": "concept",
+                "type": "varchar"
+              },
+              {
+                "name": "favplace",
+                "type": "varchar"
+              },
+              {
+                "name": "aboutme",
+                "type": "varchar"
+              },
+              {
+                "name": "sayhello",
+                "type": "varchar"
+              },
+              {
+                "name": "qq",
+                "type": "varchar"
+              },
+              {
+                "name": "qq_auth",
+                "type": "tinyint"
+              },
+              {
+                "name": "tel",
+                "type": "varchar"
+              },
+              {
+                "name": "mobile",
+                "type": "varchar"
+              },
+              {
+                "name": "mobile_auth",
+                "type": "tinyint"
+              },
+              {
+                "name": "mobile_validation",
+                "type": "tinyint"
+              },
+              {
+                "name": "email",
+                "type": "varchar"
+              },
+              {
+                "name": "email_validation",
+                "type": "tinyint"
+              },
+              {
+                "name": "wechat",
+                "type": "varchar"
+              },
+              {
+                "name": "wechat_validation",
+                "type": "tinyint"
+              },
+              {
+                "name": "realname",
+                "type": "varchar"
+              },
+              {
+                "name": "Idcard",
+                "type": "varchar"
+              },
+              {
+                "name": "Idcard_validation",
+                "type": "tinyint"
+              },
+              {
+                "name": "status",
+                "type": "int"
+              },
+              {
+                "name": "complete",
+                "type": "int"
+              },
+              {
+                "name": "hits",
+                "type": "int"
+              },
+              {
+                "name": "looknums",
+                "type": "int"
+              },
+              {
+                "name": "updatetime",
+                "type": "int"
+              },
+              {
+                "name": "x",
+                "type": "double"
+              },
+              {
+                "name": "y",
+                "type": "double"
+              },
+              {
+                "name": "photoNum",
+                "type": "int"
+              },
+              {
+                "name": "photoNum1",
+                "type": "int"
+              },
+              {
+                "name": "real_sex",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "wechat_auth",
+                "type": "int"
+              },
+              {
+                "name": "hot",
+                "type": "int"
+              },
+              {
+                "name": "ver",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

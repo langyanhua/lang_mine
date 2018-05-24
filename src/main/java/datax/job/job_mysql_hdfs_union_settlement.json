@@ -1,0 +1,126 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "sid",
+              "income",
+              "tax",
+              "poundage",
+              "realincome",
+              "paymoney",
+              "settlementtime",
+              "paytime",
+              "payinfo",
+              "paystatus",
+              "starttime",
+              "endtime",
+              "settlementstatus"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "union_settlement"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_union_settlement",
+            "fileName": "union_settlement",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "sid",
+                "type": "int"
+              },
+              {
+                "name": "income",
+                "type": "float"
+              },
+              {
+                "name": "tax",
+                "type": "float"
+              },
+              {
+                "name": "poundage",
+                "type": "float"
+              },
+              {
+                "name": "realincome",
+                "type": "float"
+              },
+              {
+                "name": "paymoney",
+                "type": "float"
+              },
+              {
+                "name": "settlementtime",
+                "type": "timestamp"
+              },
+              {
+                "name": "paytime",
+                "type": "timestamp"
+              },
+              {
+                "name": "payinfo",
+                "type": "varchar"
+              },
+              {
+                "name": "paystatus",
+                "type": "varchar"
+              },
+              {
+                "name": "starttime",
+                "type": "date"
+              },
+              {
+                "name": "endtime",
+                "type": "date"
+              },
+              {
+                "name": "settlementstatus",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

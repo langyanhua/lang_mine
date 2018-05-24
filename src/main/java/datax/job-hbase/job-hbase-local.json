@@ -1,0 +1,45 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "hbasereader",
+          "parameter": {
+            "hbaseConfig": "{'hbase.rootdir':'hdfs://192.168.1.16:8020/hbase','hbase.replication':true,'hbase.client.write.buffer':2097152,'hbase.client.pause':100,'hbase.client.retries.number':35,'hbase.client.scanner.caching':100,'hbase.client.keyvalue.maxsize':10485760,'hbase.ipc.client.allowsInterrupt':true,'hbase.client.primaryCallTimeout.get':10,'hbase.client.primaryCallTimeout.multiget':10,'hbase.client.scanner.timeout.period':60000,'hbase.coprocessor.region.classes':'org.apache.hadoop.hbase.security.access.SecureBulkLoadEndpoint','hbase.regionserver.thrift.http':false,'hbase.thrift.support.proxyuser':false,'hbase.rpc.timeout':60000,'hbase.snapshot.enabled':true,'hbase.snapshot.master.timeoutMillis':60000,'hbase.snapshot.region.timeout':60000,'hbase.snapshot.master.timeout.millis':60000,'hbase.security.authentication':'simple','hbase.rpc.protection':'authentication','zookeeper.session.timeout':90000,'zookeeper.znode.parent':'/hbase','zookeeper.znode.rootserver':'root-region-server','hbase.zookeeper.quorum':'jx-1-14,jx-1-3,jx-1-9,jx-1-11,jx-1-35','hbase.zookeeper.property.clientPort':2181,'hbase.rest.ssl.enabled':false}",
+            "table": "jxdata:userinfo",
+            "encoding": "utf8",
+            "mode": "normal",
+            "column": [
+              { "name": "cf1:uid", "type": "string" }
+            ],
+            "range": {
+              "startRowkey": "100401650",
+              "endRowkey": "100802577",
+              "isBinaryRowkey": false
+            }
+          }
+        },
+        "writer": {
+          "name": "txtfilewriter",
+          "parameter": {
+            "path": "/data/bigwork/wangya/hbasetable",
+            "fileName": "profile-user",
+            "writeMode": "truncate",
+            "dateFormat": "yyyy-MM-dd",
+            "encoding":"utf-8",
+            "fileFormat":"csv"
+          }
+        }
+      }
+    ]
+  }
+}

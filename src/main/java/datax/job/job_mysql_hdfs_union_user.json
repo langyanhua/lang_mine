@@ -1,0 +1,185 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "username",
+              "userpwd",
+              "ctype",
+              "mode",
+              "mediadesp",
+              "price",
+              "paymode",
+              "deduction",
+              "tg_url",
+              "tg_type",
+              "contact",
+              "QQ",
+              "phone",
+              "bd",
+              "bd_qq",
+              "bd_id",
+              "paytype",
+              "payee",
+              "idcard",
+              "bankno",
+              "bankname",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "sourceid",
+              "status"
+            ],
+            "splitPk": "uid",
+            "connection": [
+              {
+                "table": [
+                  "union_user"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_union_user",
+            "fileName": "union_user",
+            "column": [
+              {
+                "name": "uid",
+                "type": "INT"
+              },
+              {
+                "name": "username",
+                "type": "varchar"
+              },{
+                "name": "userpwd",
+                "type": "varchar"
+              },
+              {
+                "name": "ctype",
+                "type": "int"
+              },
+              {
+                "name": "mode",
+                "type": "int"
+              },
+              {
+                "name": "mediadesp",
+                "type": "varchar"
+              },
+              {
+                "name": "price",
+                "type": "float"
+              },
+              {
+                "name": "paymode",
+                "type": "int"
+              },
+              {
+                "name": "deduction",
+                "type": "float"
+              },
+              {
+                "name": "tg_url",
+                "type": "varchar"
+              },
+              {
+                "name": "tg_type",
+                "type": "int"
+              },
+              {
+                "name": "contact",
+                "type": "varchar"
+              },
+              {
+                "name": "QQ",
+                "type": "varchar"
+              },
+              {
+                "name": "phone",
+                "type": "varchar"
+              },
+              {
+                "name": "bd",
+                "type": "varchar"
+              },
+              {
+                "name": "bd_qq",
+                "type": "varchar"
+              },
+              {
+                "name": "bd_id",
+                "type": "int"
+              },
+              {
+                "name": "paytype",
+                "type": "int"
+              },
+              {
+                "name": "payee",
+                "type": "varchar"
+              },
+              {
+                "name": "idcard",
+                "type": "varchar"
+              },
+              {
+                "name": "bankno",
+                "type": "varchar"
+              },
+              {
+                "name": "bankname",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "sourceid",
+                "type": "int"
+              },
+              {
+                "name": "remostatusve_time",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

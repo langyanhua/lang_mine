@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "name",
+              "gender",
+              "type",
+              "open_type",
+              "per_hour",
+              "pkgname",
+              "shorttitle",
+              "size",
+              "ycoin",
+              "url",
+              "imgurl",
+              "summary",
+              "bdid",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "`sort`",
+              "status"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "integral_new_app"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_integral_new_app",
+            "fileName": "integral_new_app",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "gender",
+                "type": "tinyint"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "open_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "per_hour",
+                "type": "tinyint"
+              },
+              {
+                "name": "pkgname",
+                "type": "varchar"
+              },
+              {
+                "name": "shorttitle",
+                "type": "varchar"
+              },
+              {
+                "name": "size",
+                "type": "float"
+              },
+              {
+                "name": "ycoin",
+                "type": "int"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },
+              {
+                "name": "imgurl",
+                "type": "varchar"
+              },
+              {
+                "name": "summary",
+                "type": "varchar"
+              },
+              {
+                "name": "bdid",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "sort",
+                "type": "int"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

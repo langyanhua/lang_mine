@@ -1,0 +1,116 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "uid",
+              "report_date",
+              "enter_reg_page",
+              "active_install",
+              "active_notify",
+              "active_desktop",
+              "active_net_wifi",
+              "active_net_3g",
+              "active_net_2g",
+              "create_time",
+              "update_time",
+              "status"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "report_app_user_action"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_report_app_user_action",
+            "fileName": "report_app_user_action",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "uid",
+                "type": "int"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "enter_reg_page",
+                "type": "int"
+              },
+              {
+                "name": "active_install",
+                "type": "int"
+              },
+              {
+                "name": "active_notify",
+                "type": "int"
+              },
+              {
+                "name": "active_desktop",
+                "type": "int"
+              },
+              {
+                "name": "active_net_wifi",
+                "type": "int"
+              },
+              {
+                "name": "active_net_3g",
+                "type": "int"
+              },
+              {
+                "name": "active_net_2g",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

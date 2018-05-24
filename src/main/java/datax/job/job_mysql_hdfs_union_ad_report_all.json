@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "report_date",
+              "tg_type",
+              "ad_id",
+              "install_num",
+              "click_num",
+              "ip_num",
+              "cast_num",
+              "income_num"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "union_ad_report_all"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_union_ad_report_all",
+            "fileName": "union_ad_report_all",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "report_date",
+                "type": "date"
+              },
+              {
+                "name": "tg_type",
+                "type": "int"
+              },
+              {
+                "name": "ad_id",
+                "type": "int"
+              },
+              {
+                "name": "install_num",
+                "type": "int"
+              },
+              {
+                "name": "click_num",
+                "type": "int"
+              },
+              {
+                "name": "ip_num",
+                "type": "int"
+              },
+              {
+                "name": "cast_num",
+                "type": "float"
+              },
+              {
+                "name": "income_num",
+                "type": "float"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

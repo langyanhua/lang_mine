@@ -1,0 +1,91 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "id",
+              "city",
+              "province",
+              "lat",
+              "lng",
+              "bCity",
+              "bProvince",
+              "flag"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "city_map"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_city_map",
+            "fileName": "user",
+            "column": [
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "city",
+                "type": "varchar"
+              },
+              {
+                "name": "province",
+                "type": "varchar"
+              },
+              {
+                "name": "lat",
+                "type": "double"
+              },
+              {
+                "name": "lng",
+                "type": "double"
+              },
+              {
+                "name": "bCity",
+                "type": "varchar"
+              },
+              {
+                "name": "bProvince",
+                "type": "varchar"
+              },
+              {
+                "name": "flag",
+                "type": "int"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

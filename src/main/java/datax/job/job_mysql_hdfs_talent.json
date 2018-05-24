@@ -1,0 +1,174 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "u_name",
+              "u_gender",
+              "u_age",
+              "u_edu",
+              "u_school",
+              "work_year",
+              "u_industry",
+              "u_professional",
+              "u_level",
+              "gt_user",
+              "u_srouce",
+              "u_tel",
+              "u_qq",
+              "work_experience",
+              "create_time",
+              "update_time",
+              "gt_time",
+              "is_gt",
+              "is_rz",
+              "status",
+              "u_zhuanye",
+              "u_evaluation",
+              "u_word_url",
+              "u_birthday"
+            ],
+            "splitPk": "auto_id",
+            "connection": [
+              {
+                "table": [
+                  "talent"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_talent",
+            "fileName": "talent",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "u_name",
+                "type": "varchar"
+              },,
+              {
+                "name": "u_gender",
+                "type": "int"
+              },
+              {
+                "name": "u_age",
+                "type": "int"
+              },{
+                "name": "u_edu",
+                "type": "int"
+              },
+              {
+                "name": "u_school",
+                "type": "varchar"
+              },
+              {
+                "name": "work_year",
+                "type": "int"
+              },
+              {
+                "name": "u_industry",
+                "type": "varchar"
+              },
+              {
+                "name": "u_professional",
+                "type": "varchar"
+              },
+              {
+                "name": "u_level",
+                "type": "int"
+              },
+              {
+                "name": "gt_user",
+                "type": "varchar"
+              },
+              {
+                "name": "u_srouce",
+                "type": "varchar"
+              },
+              {
+                "name": "u_tel",
+                "type": "varchar"
+              },
+              {
+                "name": "u_qq",
+                "type": "varchar"
+              },{
+                "name": "work_experience",
+                "type": "varchar"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "gt_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_gt",
+                "type": "int"
+              },
+              {
+                "name": "is_rz",
+                "type": "int"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "u_zhuanye",
+                "type": "varchar"
+              },
+              {
+                "name": "u_evaluation",
+                "type": "varchar"
+              },
+              {
+                "name": "u_word_url",
+                "type": "varchar"
+              },
+              {
+                "name": "u_birthday",
+                "type": "date"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

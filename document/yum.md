@@ -1,0 +1,222 @@
+
+# 常用命令
+```
+#查询已安装包
+rpm -qa | grep cloudera
+yum list installed | grep cloudera
+
+# 卸载安装包
+yum -y remove cloudera-manager-server.x86_64
+yum -y remove cloudera-manager-server-db-2.x86_64
+
+ps:
+cloudera-manager-agent.x86_64
+cloudera-manager-daemons.x86_64
+cloudera-manager-server.x86_64
+cloudera-manager-server-db-2.x86_64
+
+#查询YUM源包
+yum list | grep cloudera
+
+ps:
+cloudera-manager-agent.x86_64               5.11.0-1.cm5110.p0.101.el6   @cloudera-cm5
+cloudera-manager-daemons.x86_64             5.11.0-1.cm5110.p0.101.el6   @cloudera-cm5
+cloudera-manager-server.x86_64              5.11.0-1.cm5110.p0.101.el6   @cloudera-cm5
+cloudera-manager-server-db-2.x86_64         5.11.0-1.cm5110.p0.101.el6   @cloudera-cm5
+oracle-j2sdk1.7.x86_64                      1.7.0+update67-1             @cloudera-cm5
+enterprise-debuginfo.x86_64                 5.11.0-1.cm5110.p0.101.el6   cloudera-cm5
+
+#安装server
+yum -y install cloudera-manager-agent
+yum -y remove cloudera-manager-agent
+
+yum -y install cloudera-manager-server
+yum -y install cloudera-manager-server-db-2
+
+#查询服务安装清单
+service --status-all | grep cloudera
+
+#启动服务
+service cloudera-scm-server-db restart
+service cloudera-scm-server-db start
+service cloudera-scm-server-db stop
+service cloudera-scm-server-db status
+
+service cloudera-scm-server start
+service cloudera-scm-server stop
+service cloudera-scm-server status
+
+rm -rf /var/lib/cloudera-scm-agent/*
+service cloudera-scm-agent stop
+service cloudera-scm-agent start
+
+
+# 启动过程(先启动数据库)
+service cloudera-scm-server-db start
+service cloudera-scm-server start
+
+# 停止过程(先关闭CM)
+service cloudera-scm-server stop
+service cloudera-scm-server-db stop
+
+netstat  -ano | grep 7432
+netstat  -ano | grep 7180
+
+#删除CM日志
+rm -rf /var/log/cloudera-scm-server/*
+
+#备份postgres数据库
+pg_dump -h jx-1-35 -p 7432 -U scm > /data/juxin/scm
+pg_dump -h jx-1-35 -p 7432 -U amon > /data/juxin/amon
+pg_dump -h jx-1-35 -p 7432 -U rman > /data/juxin/rman
+pg_dump -h jx-1-35 -p 7432 -U nav > /data/juxin/nav
+pg_dump -h jx-1-35 -p 7432 -U navms > /data/juxin/navms
+
+#MYSQL驱动
+/usr/share/java/mysql-connector-java.jar
+/usr/share/java/mysql-connector-java-5.1.40-bin.jar
+ln -s mysql-connector-java-5.1.40-bin.jar mysql-connector-java.jar
+/usr/share/cmf/lib/mysql-connector-java.jar
+/usr/share/java/mysql-connector-java.jar -> mysql-connector-java-5.1.17.jar
+
+```
+
+
+# Other
+```
+# CM配置文件路径|EMBEDDED|INIT|MYSQL
+/etc/cloudera-scm-server/db.properties
+
+ps:
+com.cloudera.cmf.db.type=postgresql
+com.cloudera.cmf.db.host=jx-1-35:7432
+com.cloudera.cmf.db.name=scm
+com.cloudera.cmf.db.user=scm
+com.cloudera.cmf.db.password=Do3JWcPZG6
+com.cloudera.cmf.db.setupType=EXTERNAL
+
+# 日志文件路径
+/var/log/cloudera-scm-server/cloudera-scm-server.log
+/var/log/cloudera-scm-server/cloudera-scm-server.out
+
+```
+
+# db启动日志
+```
+The files belonging to this database system will be owned by user "cloudera-scm".
+This user must also own the server process.
+
+The database cluster will be initialized with locale en_US.UTF8.
+The default text search configuration will be set to "english".
+
+fixing permissions on existing directory /var/lib/cloudera-scm-server-db/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 32MB
+creating configuration files ... ok
+creating template1 database in /var/lib/cloudera-scm-server-db/data/base/1 ... ok
+initializing pg_authid ... ok
+setting password ... ok
+initializing dependencies ... ok
+creating system views ... ok
+loading system objects' descriptions ... ok
+creating conversions ... ok
+creating dictionaries ... ok
+setting privileges on built-in objects ... ok
+creating information schema ... ok
+vacuuming database template1 ... ok
+copying template1 to template0 ... ok
+copying template1 to postgres ... ok
+
+Success. You can now start the database server using:
+
+    postgres -D /var/lib/cloudera-scm-server-db/data
+or
+    pg_ctl -D /var/lib/cloudera-scm-server-db/data -l logfile start
+
+Adding configs
+Creating SCM configuration file: /etc/cloudera-scm-server/db.properties
+waiting for server to start.... done
+server started
+CREATE ROLE
+CREATE DATABASE
+Created db properties file /etc/cloudera-scm-server/db.properties
+Creating DB amon for role ACTIVITYMONITOR
+CREATE ROLE
+CREATE DATABASE
+Created DB for role ACTIVITYMONITOR
+Creating DB rman for role REPORTSMANAGER
+CREATE ROLE
+CREATE DATABASE
+Created DB for role REPORTSMANAGER
+Creating DB nav for role NAVIGATOR
+CREATE ROLE
+CREATE DATABASE
+Created DB for role NAVIGATOR
+Creating DB navms for role NAVIGATORMETASERVER
+CREATE ROLE
+CREATE DATABASE
+Created DB for role NAVIGATORMETASERVER
+Enabled remote connections
+waiting for server to shut down.... done
+server stopped
+DB initialization done.
+waiting for server to start.... done
+server started
+=============================生成的配置文件==============================================
+/etc/cloudera-scm-server/db.properties
+# Auto-generated by initialize_embedded_db.sh
+#
+# 20171023-112158
+#
+# These are database settings for CM Manager
+#
+com.cloudera.cmf.db.type=postgresql
+com.cloudera.cmf.db.host=localhost:7432
+com.cloudera.cmf.db.name=scm
+com.cloudera.cmf.db.user=scm
+com.cloudera.cmf.db.password=htwfm5yfy4
+com.cloudera.cmf.db.setupType=EMBEDDED
+
+=============================生成的配置文件==============================================
+/etc/cloudera-scm-server/db.mgmt.properties
+# Auto-generated by initialize_embedded_db.sh
+#
+# 20171023-112158
+#
+# These are database credentials for databases
+# created by "cloudera-scm-server-db" for
+# Cloudera Manager Management Services,
+# to be used during the installation wizard if
+# the embedded database route is taken.
+#
+# The source of truth for these settings
+# is the Cloudera Manager databases and
+# changes made here will not be reflected
+# there automatically.
+#
+com.cloudera.cmf.ACTIVITYMONITOR.db.type=postgresql
+com.cloudera.cmf.ACTIVITYMONITOR.db.host=jx-1-108:7432
+com.cloudera.cmf.ACTIVITYMONITOR.db.name=amon
+com.cloudera.cmf.ACTIVITYMONITOR.db.user=amon
+com.cloudera.cmf.ACTIVITYMONITOR.db.password=YZXVqjWwKg
+com.cloudera.cmf.REPORTSMANAGER.db.type=postgresql
+com.cloudera.cmf.REPORTSMANAGER.db.host=jx-1-108:7432
+com.cloudera.cmf.REPORTSMANAGER.db.name=rman
+com.cloudera.cmf.REPORTSMANAGER.db.user=rman
+com.cloudera.cmf.REPORTSMANAGER.db.password=FhZZI9YsZN
+com.cloudera.cmf.NAVIGATOR.db.type=postgresql
+com.cloudera.cmf.NAVIGATOR.db.host=jx-1-108:7432
+com.cloudera.cmf.NAVIGATOR.db.name=nav
+com.cloudera.cmf.NAVIGATOR.db.user=nav
+com.cloudera.cmf.NAVIGATOR.db.password=uZaxF9NrvW
+com.cloudera.cmf.NAVIGATORMETASERVER.db.type=postgresql
+com.cloudera.cmf.NAVIGATORMETASERVER.db.host=jx-1-108:7432
+com.cloudera.cmf.NAVIGATORMETASERVER.db.name=navms
+com.cloudera.cmf.NAVIGATORMETASERVER.db.user=navms
+com.cloudera.cmf.NAVIGATORMETASERVER.db.password=3tQOfuSExS
+```
+
+
+# 参考链接
+- CM备份数据库：https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ag_backup_dbs.html

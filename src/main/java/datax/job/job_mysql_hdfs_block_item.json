@@ -1,0 +1,166 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "item_id",
+              "bid",
+              "id",
+              "idtype",
+              "itemtype",
+              "title",
+              "url",
+              "pic",
+              "picflag",
+              "makethumb",
+              "summary",
+              "showstyle",
+              "related",
+              "fields",
+              "`sort`",
+              "startdate",
+              "enddate",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "note",
+              "position"
+            ],
+            "splitPk": "item_id",
+            "connection": [
+              {
+                "table": [
+                  "block_item"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_block_item",
+            "fileName": "block_item",
+            "column": [
+              {
+                "name": "item_id",
+                "type": "int"
+              },
+              {
+                "name": "bid",
+                "type": "int"
+              },
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "idtype",
+                "type": "varchar"
+              },
+              {
+                "name": "itemtype",
+                "type": "tinyint"
+              },
+              {
+                "name": "title",
+                "type": "varchar"
+              },
+              {
+                "name": "url",
+                "type": "varchar"
+              },
+              {
+                "name": "pic",
+                "type": "varchar"
+              },
+              {
+                "name": "picfalg",
+                "type": "tinyint"
+              },
+              {
+                "name": "makethumb",
+                "type": "tinyint"
+              },
+              {
+                "name": "summary",
+                "type": "varchar"
+              },
+              {
+                "name": "showstyle",
+                "type": "varchar"
+              },
+              {
+                "name": "related",
+                "type": "varchar"
+              },
+              {
+                "name": "fields",
+                "type": "varchar"
+              },
+              {
+                "name": "`sort`",
+                "type": "int"
+              },
+              {
+                "name": "startdate",
+                "type": "int"
+              },
+              {
+                "name": "enddate",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "note",
+                "type": "varchar"
+              },
+              {
+                "name": "position",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "uid",
+              "username",
+              "cell_phone",
+              "password",
+              "password_m",
+              "kf_id",
+              "`group`",
+              "reg_time",
+              "login_time",
+              "login_count",
+              "online_time",
+              "offline_ts",
+              "reg_ip",
+              "login_ip",
+              "upgrade_start",
+              "upgrade_end",
+              "credit",
+              "money",
+              "charge_count",
+              "channel_uid",
+              "channel_sid",
+              "openid",
+              "token",
+              "user_client_type",
+              "recommended",
+              "say_hi_recommended",
+              "isvip",
+              "vip_start",
+              "vip_end",
+              "ycoin",
+              "real_reg_time",
+              "create_time",
+              "status",
+              "is_bind_roes"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user",
+            "fileName": "user",
+            "column": [
+              {
+                "name": "uid",
+                "type": "bigint"
+              },
+              {
+                "name": "username",
+                "type": "varchar"
+              },
+              {
+                "name": "cell_phone",
+                "type": "bigint"
+              },
+              {
+                "name": "password",
+                "type": "varchar"
+              },
+              {
+                "name": "password_m",
+                "type": "varchar"
+              },
+              {
+                "name": "kf_id",
+                "type": "bigint"
+              },
+              {
+                "name": "group",
+                "type": "tinyint"
+              },
+              {
+                "name": "reg_time",
+                "type": "bigint"
+              },
+              {
+                "name": "login_time",
+                "type": "bigint"
+              },
+              {
+                "name": "login_count",
+                "type": "bigint"
+              },
+              {
+                "name": "online_time",
+                "type": "bigint"
+              },
+              {
+                "name": "offline_ts",
+                "type": "bigint"
+              },
+              {
+                "name": "reg_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "login_ip",
+                "type": "varchar"
+              },
+              {
+                "name": "upgrade_start",
+                "type": "bigint"
+              },
+              {
+                "name": "upgrade_end",
+                "type": "bigint"
+              },
+              {
+                "name": "credit",
+                "type": "bigint"
+              },
+              {
+                "name": "money",
+                "type": "double"
+              },
+              {
+                "name": "charge_count",
+                "type": "bigint"
+              },
+              {
+                "name": "channel_uid",
+                "type": "bigint"
+              },
+              {
+                "name": "channel_sid",
+                "type": "bigint"
+              },
+              {
+                "name": "openid",
+                "type": "varchar"
+              },
+              {
+                "name": "token",
+                "type": "varchar"
+              },
+              {
+                "name": "user_client_type",
+                "type": "tinyint"
+              },
+              {
+                "name": "recommended",
+                "type": "tinyint"
+              },
+              {
+                "name": "say_hi_recommended",
+                "type": "tinyint"
+              },
+              {
+                "name": "isvip",
+                "type": "tinyint"
+              },
+              {
+                "name": "vip_start",
+                "type": "bigint"
+              },
+              {
+                "name": "vip_end",
+                "type": "bigint"
+              },
+              {
+                "name": "ycoin",
+                "type": "bigint"
+              },
+              {
+                "name": "real_reg_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "is_bind_roes",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "msg_id",
+              "type",
+              "to_gender",
+              "msg",
+              "rel_id",
+              "msg_reply",
+              "ver",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status",
+              "hour_start",
+              "hour_end",
+              "voice_url",
+              "voice_time",
+              "voice_userid",
+              "voice_userid",
+              "video_img",
+              "video_time",
+              "video_size",
+              "video_width",
+              "video_height",
+              "video_userid",
+              "video_title"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "msg_tpl"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_msg_tpl",
+            "fileName": "msg_tpl",
+            "column": [
+              {
+                "name": "msg_id",
+                "type": "INT"
+              },
+              {
+                "name": "type",
+                "type": "tinyint"
+              },
+              {
+                "name": "to_gender",
+                "type": "tinyint"
+              },
+              {
+                "name": "msg",
+                "type": "varchar"
+              },
+              {
+                "name": "rel_id",
+                "type": "tinyint"
+              },
+              {
+                "name": "msg_reply",
+                "type": "varchar"
+              },
+              {
+                "name": "ver",
+                "type": "int"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              },
+              {
+                "name": "hour_start",
+                "type": "int"
+              },
+              {
+                "name": "hour_end",
+                "type": "int"
+              },
+              {
+                "name": "voice_url",
+                "type": "varchar"
+              },
+              {
+                "name": "voice_time",
+                "type": "int"
+              },
+              {
+                "name": "voice_userid",
+                "type": "int"
+              },
+              {
+                "name": "video_url",
+                "type": "varchar"
+              },
+              {
+                "name": "video_img",
+                "type": "varchar"
+              },
+              {
+                "name": "video_time",
+                "type": "int"
+              },
+              {
+                "name": "video_size",
+                "type": "int"
+              },
+              {
+                "name": "video_width",
+                "type": "int"
+              },
+              {
+                "name": "video_height",
+                "type": "int"
+              },
+              {
+                "name": "video_userid",
+                "type": "int"
+              },
+              {
+                "name": "video_title",
+                "type": "varchar"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

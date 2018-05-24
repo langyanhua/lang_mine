@@ -1,0 +1,131 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "auto_id",
+              "name",
+              "recommended",
+              "thumb",
+              "pic",
+              "market_price",
+              "description",
+              "num",
+              "zhuli",
+              "top_hour",
+              "`sort`",
+              "flag",
+              "create_time",
+              "update_time",
+              "remove_time",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "prize_new"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_prize_new",
+            "fileName": "prize_new",
+            "column": [
+              {
+                "name": "auto_id",
+                "type": "INT"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "recommended",
+                "type": "int"
+              },
+              {
+                "name": "thumb",
+                "type": "varchar"
+              },
+              {
+                "name": "pic",
+                "type": "varchar"
+              },
+              {
+                "name": "market_price",
+                "type": "float"
+              },
+              {
+                "name": "description",
+                "type": "varchar"
+              },
+              {
+                "name": "num",
+                "type": "int"
+              },
+              {
+                "name": "zhuli",
+                "type": "int"
+              },
+              {
+                "name": "top_hour",
+                "type": "tinyint"
+              },
+              {
+                "name": "sort",
+                "type": "int"
+              },
+              {
+                "name": "flag",
+                "type": "tinyint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "remove_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}

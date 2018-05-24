@@ -1,0 +1,4 @@
+第一天熟悉需求，写了初步的sparkReceive方式拉取数据
+第二天测试，没有WAL。改为Direct模式，测试
+第三天，由于手动提交必须提交到zookeeper /kakfa/下，必须改源码，所以弃用
+第四天，用kafkaAPI，单机程序，手动提交任务。

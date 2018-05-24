@@ -1,0 +1,91 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "yfbwapuser",
+            "password": "vd8YXII4e33qStDFMiyf",
+            "column": [
+              "albumid",
+              "albumname",
+              "uid",
+              "pic",
+              "picdesc",
+              "viewtimes",
+              "addtime",
+              "status"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_photo_album"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.2.83:3306/yuanfenba_www?characterEncoding=utf-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "$url",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/juxin_ods_mysql.db/www_user_photo_album",
+            "fileName": "user_photo_album",
+            "column": [
+              {
+                "name": "albumid",
+                "type": "bigint"
+              },
+              {
+                "name": "albumname",
+                "type": "varchar"
+              },
+              {
+                "name": "uid",
+                "type": "bigint"
+              },
+              {
+                "name": "pic",
+                "type": "varchar"
+              },
+              {
+                "name": "picdesc",
+                "type": "varchar"
+              },
+              {
+                "name": "viewtimes",
+                "type": "bigint"
+              },
+              {
+                "name": "addtime",
+                "type": "bigint"
+              },
+              {
+                "name": "status",
+                "type": "tinyint"
+              }
+            ],
+            "writeMode": "nonConflict",
+            "fieldDelimiter": "\1",
+            "compress": "NONE"
+          }
+        }
+      }
+    ]
+  }
+}
