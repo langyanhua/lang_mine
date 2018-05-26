@@ -1,0 +1,7 @@
+当在hiveJDBC执行load data local path命令时，hiveserver必须和local path在同一台机器上
+官网是这么说的
+    // load data into table
+    // NOTE: filepath has to be local to the hive server
+    // NOTE: /tmp/a.txt is a ctrl-A separated file with two fields per line
+
+load 表会像insert一样锁表：http://blog.sina.com.cn/s/blog_7673d4a501019mct.html

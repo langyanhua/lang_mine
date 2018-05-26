@@ -39,6 +39,16 @@ public class Configs {
 	public static final String Glob_SolrPersonCollection = "xingren";// Solr行人索引采集器名
 	public static final String Glob_SolrAlarmCollection = "baojing_manager";// Solr报警索引采集器名
 	public static final String Glob_SolrLogCollection = "log";// Solr日志索引库
+	/**
+	 * hive JDBC
+	 * Version information
+	 * The original Hive Server was removed from Hive releases starting in version 1.0.0. See HIVE-6977.
+	 *
+	 * jdbc:hive2://<host1>:<port1>,<host2>:<port2>/dbName;initFile=<file>;sess_var_list?hive_conf_list#hive_var_list
+	 */
+	public static String HiveUrl = "jdbc:hive2://<host1>:<port1>,<host2>:<port2>/dbName;initFile=<file>;sess_var_list?hive_conf_list#hive_var_list";
+	public static String HiveUserName = "";
+	public static String HiveUserPwd = "";
    /**
     * HDFSconfig配置
     */
